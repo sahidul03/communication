@@ -2,7 +2,7 @@
     <% @sortedallmessage.each do |msg|%>
             <div class="every_message">
               <% if msg.sender_id==@user.id %>
-                <div class="username"><%= @user.email %></div>
+                <div class="username"><%= @user.name %></div>
               <% elsif msg.sender_id==@recipient.id%>
                   <div class="username"><%= @recipient.email %></div>
               <% end %>
