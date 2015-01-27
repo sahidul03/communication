@@ -4,7 +4,7 @@
               <% if msg.sender_id==@user.id %>
                 <div class="username"><%= @user.name %></div>
               <% elsif msg.sender_id==@recipient.id%>
-                  <div class="username"><%= @recipient.email %></div>
+                  <div class="username"><%= @recipient.name %></div>
               <% end %>
               <div class="body"><%= msg.body %></div>
               <div class="datetime"><%= msg.created_at %></div>
