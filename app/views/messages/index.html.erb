@@ -1,0 +1,43 @@
+<h1>Home Page</h1>
+<div class="chatting_contacts_container">
+  <% @users.each do |user| %>
+      <div class="contacts" data-userinfo="<%= user.to_json %>">
+        <%= user.email%><br/>
+      </div>
+  <% end %>
+</div>
+<div class="chatbar">
+  <div class="titlebar">Name</div>
+  <div class="chat_barAndMessage_container">
+    top<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    djksfklds<br/>
+    down<br/>
+  </div>
+  <div class="MessageInputField">
+    <%= form_for @message do |f| %>
+        <%= hidden_field_tag :recipient_id %><br/>
+        <%= hidden_field_tag  :sender_id, @user_id %>
+        <%= f.text_field :body, :class=>"text_input_field", :placeholder=>"Write something here....." %>
+        <%= f.submit :class=>"hidden_class" %>
+    <% end %>
+
+  </div>
+</div>

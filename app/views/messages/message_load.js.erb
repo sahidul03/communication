@@ -1,0 +1,5 @@
+
+$('.chatbar .chat_barAndMessage_container').html('<%= escape_javascript render("messages/message_build") %>');
+
+var seclectmessagecontainer=$('.chatbar .chat_barAndMessage_container');
+seclectmessagecontainer.scrollTop(seclectmessagecontainer.prop("scrollHeight"));

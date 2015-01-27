@@ -1,0 +1,81 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.chatting_contacts_container{
+  width: 192px;
+  border-top: 1px solid #B3B3BB;
+  border-left: 1px solid #B3B3BB;
+  border-right: 1px solid #B3B3BB;
+  color: gray;
+}
+.chatting_contacts_container a{
+  text-decoration: blink;
+  color: grey;
+}
+.chatting_contacts_container .contacts{
+  border-bottom: 1px solid #B3B3BB;
+  padding-left: 5px;
+  padding-top: 5px;
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+.chatting_contacts_container .contacts :hover{
+  font-weight: bold;
+}
+.active{
+  font-weight: bold;
+  color: darkslategray;
+}
+.chatbar{
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  border: 1px solid #dadada;
+  border-radius: 6px;
+  width: 230px;
+  max-height: 275px;
+  display: none;
+}
+.chat_barAndMessage_container{
+  height: 209px;
+  overflow: auto;
+  width: 100%;
+  background-color: rgba(166, 144, 193, 0.18);
+}
+.chat_barAndMessage_container .every_message{
+  border: 1px solid #dadada;
+}
+.chat_barAndMessage_container .every_message .username{
+  font-size: 12px;
+  font-weight: 700;
+}
+.chat_barAndMessage_container .every_message .body{
+  font-size: 11px;
+}
+.chat_barAndMessage_container .every_message .datetime{
+  font-size: 10px;
+  text-align: right;
+}
+.MessageInputField{
+}
+.MessageInputField .text_input_field{
+  width: 100%;
+  height: 28px;
+  margin-top: 2px;
+}
+.chatbar .titlebar{
+  text-align: center;
+  background-color: gray;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding-top: 3px;
+
+}
+.chatbar .titlebar img{
+  float: right;
+  width: 21px;
+  cursor: pointer;
+}
+.hidden_class{
+  display: none;
+}

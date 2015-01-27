@@ -1,0 +1,39 @@
+  <h1>Home Page</h1>
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <div class="chatting_contacts_container">
+      <% @users.each do |user| %>
+          <% if user.id!=@user_id %>
+              <div class="contacts" data-userinfo="<%= user.to_json %>">
+                <%= user.email%><br/>
+              </div>
+          <% end %>
+      <% end %>
+    </div></div>
+    <div class="col-lg-8 col-md-8 col-sm-8">Posts....</div>
+  </div>
+
+  <div class="chatbar">
+    <div class="titlebar">
+      <span class="username">Name</span>
+      <img src="/image/cancel.png" />
+
+    </div>
+    <div class="ChatContentField">
+      <div class="chat_barAndMessage_container">
+        <!--<div class="every_message">-->
+        <!--<div class="username">Sahid</div>-->
+        <!--<div class="body">It's a pleasure to meet you</div>-->
+        <!--<div class="datetime">16.1.2015</div>-->
+        <!--</div>-->
+      </div>
+      <div class="MessageInputField">
+        <%= form_for @message, remote: true do |f| %>
+            <%= hidden_field_tag :recipient_id %>
+            <%= f.text_field :body, :class=>"text_input_field", :placeholder=>"Write something here....." %>
+            <%= f.submit :class=>"hidden_class" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
