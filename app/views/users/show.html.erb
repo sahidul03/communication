@@ -1,14 +1,7 @@
 <h1><%= @user.name %></h1>
 <%= image_tag(@user.profilepic, :width => 60) if @user.profilepic.present? %>
-
-<%= form_for @message do |f| %>
-    <%= f.collection_select(:recipient_id, User.all, :id, :email) %><br/>
-    <%= f.text_area :body %><br/>
-
-    <%= hidden_field_tag  :sender_id, @user.id %>
-    <%= f.submit %>
-<% end %>
-
-
+<br/>
+<br/>
+<br/>
 <br/>
 <%= link_to "Back to Users", users_path %>

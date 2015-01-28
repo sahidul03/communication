@@ -49,7 +49,7 @@ $(document).ready(function(){
         };
         this.MessageLoad= function(recipient_id){
             $.ajax({
-                url: "messages/message_load",
+                url: '<%= Rails.application.routes.url_helpers.message_load_messages_path %>',
                 data: {recipient_id: recipient_id},
                 type: 'get'
 
@@ -61,13 +61,42 @@ $(document).ready(function(){
                     var user = $('.chatbar .titlebar .username').data('user');
                     var recipient_id = user['id'];
                     $.ajax({
-                        url: "messages/message_load",
+                        url:'<%= Rails.application.routes.url_helpers.message_load_messages_path %>',
                         data: {recipient_id: recipient_id},
                         type: 'get'
 
                     });
                 }
             },1000)
+        };
+        this.FriendSearch=new function(){
+            var search_field=$('.search_text_field');
+            search_field.keydown(function(e){
+                if($(this).val()=='') {
+                    if (e.keyCode == 32) {
+                        e.preventDefault();
+                    }
+                }
+            });
+            search_field.keyup(function(){
+                var friend_name=$(this).val();
+                if(friend_name!=''){
+                    $.ajax({
+                        url: '<%= Rails.application.routes.url_helpers.search_friend_users_path %>',
+                        data: {friend_name: friend_name},
+                        type: 'get'
+
+                    });
+                }
+            });
+        };
+        this.Events=new function(){
+            $('.frnd_search_field_and_container').click(function(e){
+                e.stopPropagation();
+            });
+            $(document).click(function(){
+                $('.serched_friend_list_container').hide();
+            });
         };
     };
 });

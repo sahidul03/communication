@@ -79,3 +79,37 @@
 .hidden_class{
   display: none;
 }
+.login_form_container{
+margin: auto;
+margin-top: 150px;
+width: 250px;
+}
+.form_fields label{
+  color: gray;
+}
+.form_fields input{
+
+}
+.search_text_field{
+width: 250px;
+}
+.serched_friend_list_container{
+  display: none;
+  position: absolute;
+  top: 26px;
+  left: 15px;
+  width: 250px;
+  border: 1px solid #dadada;
+  z-index: 100;
+  background-color: #ffffff;
+  border-radius: 2px;
+
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color=#979393)";/*IE 8*/
+  -moz-box-shadow: 2px 2px 4px #979393;/*FF 3.5+*/
+  -webkit-box-shadow: 2px 2px 4px #979393;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+  box-shadow: 2px 2px 4px #979393;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color=#979393); /*IE 5.5-7*/
+
+
+}

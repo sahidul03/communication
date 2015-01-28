@@ -1,0 +1,5 @@
+<% if @searched_friend.any?  %>
+    <% @searched_friend.each do |frnd|  %>
+        <div><%= link_to frnd.email, frnd %></div>
+    <% end %>
+<% end %>
