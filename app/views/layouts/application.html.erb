@@ -3,7 +3,7 @@
 <head>
   <title>Communication</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -25,7 +25,31 @@
       <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
       <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
   <% end %>
-  <div class="container"><%= yield %></div>
+</p>
+<% if current_user %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-sm-2 col-lg-2">
+          <%= link_to 'Home', users_path %>
+        </div>
+        <div class="col-md-2 col-sm-2 col-lg-2">
+          <%= link_to 'Profile', user_path(@user_id)%>
+        </div>
+        <div class="col-md-2 col-sm-2 col-lg-2">
+          <div class="menu_class friend_request_menu">Friend+
+            <div class="received_friend_request_container">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-2 col-lg-2">Notification</div>
+      </div>
+    </div>
+<% end %>
+
+<div class="container"><%= yield %></div>
+
+
 
 
 

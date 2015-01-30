@@ -1,0 +1,11 @@
+<% if @all_Friend_request.any? %>
+    <% @all_Friend_request.each do |frnd_reqst| %>
+        <div data-userinfo="<%= frnd_reqst.to_json %>">
+          <%= link_to frnd_reqst.email, frnd_reqst, :class => 'seperate_class' %>
+          <span class="seperate_class confirm_request">Confirm</span>
+          <span class="seperate_class cancel_request">Cancel</span>
+        </div>
+    <% end %>
+<% else %>
+    <div>None</div>
+<% end %>

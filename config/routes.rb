@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get "search_friend"
+      get "add_friend_request"
+      get "confirm_friend_request"
+      get "confirm_friend_request_ajax"
+      get "cancel_friend_request"
+      get "cancel_friend_request_ajax"
+      get "load_received_friend_request_list"
     end
   end
   resources :messages do

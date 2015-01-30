@@ -4,5 +4,18 @@
 <br/>
 <br/>
 <br/>
-<h1><%= @friend_comment %></h1>
+<div class="friend_type_show">
+    <% if @friend_comment=='Add Friend' %>
+        <div class=""><%= link_to "Add Friend", add_friend_request_users_path(:user_id=>@user.id), :class => 'btn_class'  %> </div>
+    <% elsif @friend_comment=='Friend' %>
+        <div class="Friend_button btn_class">Friend</div>
+    <% elsif @friend_comment=='Confirm or Cancel' %>
+        <div class="confirm_or_cancel">
+          <%= link_to 'Confirm', confirm_friend_request_users_path(:user_id=>@user.id), :class=>'btn_class confirm' %>
+          <%= link_to 'Cancel', cancel_friend_request_users_path(:user_id=>@user.id), :class=>'btn_class cancel' %>
+        </div>
+    <% elsif @friend_comment=='Request Sent' %>
+        <div class="request_sent btn_class">Request Sent</div>
+    <% end %>
+</div>
 <%= link_to "Back to Users", users_path %>

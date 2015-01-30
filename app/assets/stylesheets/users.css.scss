@@ -1,6 +1,24 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn_class{
+  border: 1px solid #dadada;
+  text-align: center;
+  background-color: lightslategrey;
+  color: white;
+  width: 120px;
+  cursor: pointer;
+}
+.btn_class :hover{
+  text-decoration: none;
+}
+.float_left{
+  float: left;
+}
+.float_clear{
+  clear: both;
+}
 .chatting_contacts_container{
   width: 192px;
   border-top: 1px solid #B3B3BB;
@@ -112,4 +130,38 @@ width: 250px;
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color=#979393); /*IE 5.5-7*/
 
 
+}
+.add_friend_request{
+}
+
+.confirm{
+  margin-right: 15px;
+}
+.menu_class{
+  width: 48px;
+  cursor: pointer;
+}
+.received_friend_request_container{
+  position: absolute;
+  left: 15px;
+  border: 1px solid #dadada;
+  top: 22px;
+  width: 250px;
+  display: none;
+  cursor: auto;
+}
+.show_class{
+  display: block;
+}
+.hide_class{
+  display: none;
+}
+.seperate_class{
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: #67b168;
+  cursor: pointer;
+}
+.seperate_class :hover{
+  background-color: #337ab7;
 }

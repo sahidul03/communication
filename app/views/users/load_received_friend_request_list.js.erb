@@ -1,0 +1,29 @@
+$('.received_friend_request_container').html('<%= escape_javascript render("users/load_friend_request") %>');
+$('.received_friend_request_container').find('.confirm_request').click(function(){
+    var data=$(this).parent().data('userinfo');
+    var user_id=data.id;
+    $.ajax({
+        url: '<%= Rails.application.routes.url_helpers.confirm_friend_request_ajax_users_path %>',
+        data: {user_id:user_id},
+        type: 'get'
+    });
+    $(this).parent().remove();
+    if($('.received_friend_request_container').empty())
+    {
+        $('.received_friend_request_container').html('None')
+    }
+});
+$('.received_friend_request_container').find('.cancel_request').click(function(){
+    var data=$(this).parent().data('userinfo');
+    var user_id=data.id;
+    $.ajax({
+        url: '<%= Rails.application.routes.url_helpers.cancel_friend_request_ajax_users_path %>',
+        data: {user_id:user_id},
+        type: 'get'
+    });
+    $(this).parent().remove();
+    if($('.received_friend_request_container').empty())
+    {
+        $('.received_friend_request_container').html('None')
+    }
+});

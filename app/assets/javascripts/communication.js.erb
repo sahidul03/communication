@@ -85,7 +85,6 @@ $(document).ready(function(){
                         url: '<%= Rails.application.routes.url_helpers.search_friend_users_path %>',
                         data: {friend_name: friend_name},
                         type: 'get'
-
                     });
                 }
             });
@@ -93,9 +92,30 @@ $(document).ready(function(){
         this.Events=new function(){
             $('.frnd_search_field_and_container').click(function(e){
                 e.stopPropagation();
+                $('.received_friend_request_container').hide();
+            });
+            $('.received_friend_request_container').click(function(e){
+                e.stopPropagation();
             });
             $(document).click(function(){
                 $('.serched_friend_list_container').hide();
+                $('.received_friend_request_container').hide();
+            });
+            $('.friend_request_menu').click(function(e){
+                e.stopPropagation();
+                $('.serched_friend_list_container').hide();
+                var RFRC=$('.received_friend_request_container');
+                if(RFRC.is(':visible')) {
+                    RFRC.hide();
+                }
+                else{
+                    RFRC.show();
+                    $.ajax({
+                        url: '<%= Rails.application.routes.url_helpers.load_received_friend_request_list_users_path %>',
+                        data: {},
+                        type: 'get'
+                    });
+                }
             });
         };
     };
