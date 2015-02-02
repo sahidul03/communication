@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get "cancel_friend_request"
       get "cancel_friend_request_ajax"
       get "load_received_friend_request_list"
+      get "post_create"
     end
   end
   resources :messages do
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
       get "message_load"
     end
   end
+  resources :posts
 
   # devise_for :users, controllers: {registrations: 'registrations'}
   root :to => redirect('/users')

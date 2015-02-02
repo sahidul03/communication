@@ -8,7 +8,7 @@ $('.received_friend_request_container').find('.confirm_request').click(function(
         type: 'get'
     });
     $(this).parent().remove();
-    if($('.received_friend_request_container').empty())
+    if($.trim($('.received_friend_request_container').html())=='')
     {
         $('.received_friend_request_container').html('None')
     }
@@ -22,7 +22,7 @@ $('.received_friend_request_container').find('.cancel_request').click(function()
         type: 'get'
     });
     $(this).parent().remove();
-    if($('.received_friend_request_container').empty())
+    if($.trim($('.received_friend_request_container').html())=='')
     {
         $('.received_friend_request_container').html('None')
     }
