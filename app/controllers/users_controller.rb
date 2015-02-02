@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users=User.all
+    @post=Post.new
     @message=Message.new
     @cuuser=current_user
     # @msgs_sent=current_user.sent_messages.where("recipient_id = ?", 1)

@@ -11,7 +11,7 @@
     <div class="col-lg-3 col-md-3 col-sm-3"></div>
   </div>
 
-
+  <br/>
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-4">
       <div class="chatting_contacts_container">
@@ -23,7 +23,13 @@
           <% end %>
       <% end %>
     </div></div>
-    <div class="col-lg-8 col-md-8 col-sm-8">Posts....</div>
+    <div class="col-lg-8 col-md-8 col-sm-8">
+      <%= form_for @post, remote: true do |f| %>
+          <%= f.text_area :body, :class=>"status_input_field", :placeholder=>"Write something here from your mind....." %>
+          <br/>
+          <%= f.submit 'Post' %>
+      <% end %>
+    </div>
   </div>
 
   <div class="chatbar">
