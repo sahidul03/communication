@@ -29,18 +29,22 @@ class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
     @friend_comment='Add Friend'
-    frndtype1=current_user.sent_request.where("friend_type = ? AND recipient_id = ?", 1 , params[:id])
-    frndtype2=current_user.received_request.where("friend_type = ? AND sender_id = ?", 1, params[:id])
-    frndtype3=current_user.received_request.where("friend_type = ? AND sender_id = ?", 2, params[:id])
-    frndtype4=current_user.sent_request.where("friend_type = ? AND recipient_id = ?", 2, params[:id])
-    if frndtype1.any? || frndtype2.any?
-      @friend_comment='Friend'
-    end
-    if frndtype3.any?
-      @friend_comment='Confirm or Cancel'
-    end
-    if frndtype4.any?
-      @friend_comment='Request Sent'
+    if current_user==@user
+      @friend_comment='Me'
+    else
+      frndtype1=current_user.sent_request.where("friend_type = ? AND recipient_id = ?", 1 , params[:id])
+      frndtype2=current_user.received_request.where("friend_type = ? AND sender_id = ?", 1, params[:id])
+      frndtype3=current_user.received_request.where("friend_type = ? AND sender_id = ?", 2, params[:id])
+      frndtype4=current_user.sent_request.where("friend_type = ? AND recipient_id = ?", 2, params[:id])
+      if frndtype1.any? || frndtype2.any?
+        @friend_comment='Friend'
+      end
+      if frndtype3.any?
+        @friend_comment='Confirm or Cancel'
+      end
+      if frndtype4.any?
+        @friend_comment='Request Sent'
+      end
     end
   end
 
