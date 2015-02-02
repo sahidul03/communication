@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
   has_many :sent_request, class_name: "UserFriend", foreign_key: "sender_id"
   has_many :received_request, class_name: "UserFriend", foreign_key: "recipient_id"
 
+  has_many :posts
+
 end

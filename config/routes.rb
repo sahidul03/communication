@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get "message_load"
     end
   end
+  resources :posts
 
   # devise_for :users, controllers: {registrations: 'registrations'}
   root :to => redirect('/users')
