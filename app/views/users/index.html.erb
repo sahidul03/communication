@@ -13,7 +13,7 @@
 
   <br/>
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-4">
+    <div class="col-lg-3 col-md-3 col-sm-3">
       <div class="chatting_contacts_container">
       <% @friend_list.each do |friend| %>
           <% if friend.id!=@user_id %>
@@ -23,13 +23,13 @@
           <% end %>
       <% end %>
     </div></div>
-    <div class="col-lg-8 col-md-8 col-sm-8">
-      <%= form_for @post, remote: true do |f| %>
-          <%= f.text_area :body, :class=>"status_input_field", :placeholder=>"Write something here from your mind....." %>
-          <br/>
-          <%= f.submit 'Post' %>
-      <% end %>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="">
+        <textarea class="status_input_field" placeholder="Write something here from your mind....."></textarea><br/>
+        <input type="button" class="post_submit_button" value="Post">
+      </div>
     </div>
+    <div class="col-lg-3 col-md-3 col-sm-3"></div>
   </div>
 
   <div class="chatbar">

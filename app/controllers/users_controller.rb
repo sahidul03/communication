@@ -99,6 +99,10 @@ class UsersController < ApplicationController
 
   end
 
+  def post_create
+
+  end
+
   protected
   def common_method
     @user_id=current_user.id
