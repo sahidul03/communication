@@ -5,6 +5,10 @@ class PostsController < ApplicationController
     @post.save
   end
 
+  def post_like
+
+  end
+
   protected
 
   def post_params

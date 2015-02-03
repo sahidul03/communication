@@ -34,15 +34,20 @@
       </div>
       <div class="posts_container">
         <% @all_posts.each do |pst| %>
-        <div class="single_post">
+        <div class="single_post" data-postid="<%= pst.id %>">
           <div class="post_title">
             <% if pst.user.profilepic.present? %>
                 <%= image_tag(pst.user.profilepic) %>
             <% else %>
                 <img src="/image/profile-image2.gif" />
             <% end %>
-            <span class="user"> <%= pst.user.email %> </span><%= pst.title %></div>
-          <div class="post_body"><%= pst.body %></div>
+          <span class="user"> <%= pst.user.email %> </span><%= pst.title %></div>
+          <div class="post_body">
+            <div class="body_part"><%= pst.body %></div>
+          </div>
+          <div class="like_comment_part">
+            <span class="like">Like</span>
+          </div>
         </div>
         <% end %>
       </div>

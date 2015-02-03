@@ -199,6 +199,19 @@ width: 250px;
   min-height: 45px;
   padding-top: 5px;
 }
+.single_post .post_body .body_part{
+  min-height: 40px;
+}
+.single_post .like_comment_part{
+  background-color: rgba(152, 165, 150, 0.52);
+  padding-left: 7px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.single_post .like_comment_part .like{
+  cursor: pointer;
+}
+
 .single_post{
   margin-top: 15px;
   border: 1px solid #dadada;

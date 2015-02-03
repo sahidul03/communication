@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get "cancel_friend_request_ajax"
       get "load_received_friend_request_list"
       get "post_create"
+      get "post_like"
     end
   end
   resources :messages do

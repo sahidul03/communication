@@ -45,6 +45,26 @@ class UsersController < ApplicationController
     @all_posts= @all_posts.sort_by &:created_at
     @all_posts.reverse!
      # raise @all_posts.inspect
+
+    # testing purpose
+    post=Post.find(17)
+    like=post.like
+    if like==nil
+      like=current_user.id.to_s;
+      # raise like.inspect
+    else
+      like_arry=like.split(',')
+      # raise like_arry.inspect
+      unless like_arry.include?(current_user.id)
+        like=like+','+current_user.id.to_s
+        raise like.inspect
+      end
+      # like=like+','+current_user.id.to_s
+    end
+    post.update(:like=>like)
+
+
+
   end
 
   def show
@@ -120,6 +140,17 @@ class UsersController < ApplicationController
   end
 
   def post_create
+
+  end
+  def post_like
+    post=Post.find(params[:post_id])
+    like=post.like
+    # if like==''
+    #   like=current_user.id.to_s;
+    # else
+    #   like=like+','+current_user.id.to_s
+    # end
+    # post.update(:like=>like)
 
   end
 
