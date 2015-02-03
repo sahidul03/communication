@@ -47,21 +47,21 @@ class UsersController < ApplicationController
      # raise @all_posts.inspect
 
     # testing purpose
-    post=Post.find(17)
-    like=post.like
-    if like==nil
-      like=current_user.id.to_s;
-      # raise like.inspect
-    else
-      like_arry=like.split(',')
-      # raise like_arry.inspect
-      unless like_arry.include?(current_user.id)
-        like=like+','+current_user.id.to_s
-        raise like.inspect
-      end
-      # like=like+','+current_user.id.to_s
-    end
-    post.update(:like=>like)
+    # post=Post.find(17)
+    # like=post.like
+    # if like==nil
+    #   like=current_user.id.to_s;
+    #   # raise like.inspect
+    # else
+    #   like_arry=like.split(',')
+    #   # raise like_arry.inspect
+    #   unless like_arry.include?(current_user.id)
+    #     like=like+','+current_user.id.to_s
+    #     raise like.inspect
+    #   end
+    #   # like=like+','+current_user.id.to_s
+    # end
+    # post.update(:like=>like)
 
 
 
@@ -151,6 +151,21 @@ class UsersController < ApplicationController
     #   like=like+','+current_user.id.to_s
     # end
     # post.update(:like=>like)
+    # post=Post.find(17)
+    # like=post.like
+    if like==nil || like==''
+      like=current_user.id.to_s;
+      # raise like.inspect
+    else
+      like_arry=like.split(',')
+      # raise like_arry.inspect
+      unless like_arry.include?(current_user.id.to_s)
+        like=like+','+current_user.id.to_s
+        # raise like.inspect
+      end
+      # like=like+','+current_user.id.to_s
+    end
+    post.update(:like=>like)
 
   end
 
