@@ -169,4 +169,38 @@ width: 250px;
 .status_input_field{
   width: 300px;
   height: 50px;
+  border: 1px solid rgba(153, 153, 153, 0.56);
+  border-radius: 3px;
+}
+.status_title_input_field{
+  width: 300px;
+  border: 1px solid rgba(153, 153, 153, 0.56);
+  border-radius: 3px;
+}
+.single_post .post_title{
+  background-color: #CCCCCC;
+  padding-left: 1px;
+}
+.single_post .post_title .user{
+  background-color: green;
+  color: #ffffff;
+  margin-right: 30px;
+  margin-left: 4px;
+  border-radius: 3px;
+  padding-left: 5px;
+}
+.single_post .post_title img{
+  height: 35px;
+  border-radius: 3px;
+}
+.single_post .post_body{
+  background-color: #dff0d8;
+  padding-left: 10px;
+  min-height: 45px;
+  padding-top: 5px;
+}
+.single_post{
+  margin-top: 15px;
+  border: 1px solid #dadada;
+  border-radius: 6px;
 }

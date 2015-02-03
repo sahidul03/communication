@@ -89,6 +89,11 @@ $(document).ready(function(){
                 }
             });
         };
+        this.CreatePost=new function(){
+            $('.post_submit_button').click(function(){
+                alert(56)
+            });
+        };
         this.Events=new function(){
             $('.frnd_search_field_and_container').click(function(e){
                 e.stopPropagation();
@@ -116,9 +121,6 @@ $(document).ready(function(){
                         type: 'get'
                     });
                 }
-            });
-            $('.post_submit_button').click(function(){
-                alert(4)
             });
         };
     };

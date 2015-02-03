@@ -4,27 +4,47 @@ class UsersController < ApplicationController
   def index
     @users=User.all
     @post=Post.new
+    @user_p=User.new
     @message=Message.new
     @cuuser=current_user
-    # @msgs_sent=current_user.sent_messages.where("recipient_id = ?", 1)
-    # @msgs_recipient=current_user.received_messages.where("sender_id = ?",1)
-    # @newarry=@msgs_recipient+@msgs_sent
-    # @sortedarr= @newarry.sort_by &:created_at
     friend1=current_user.sent_request.where("friend_type = ?",1)
     friend2=current_user.received_request.where("friend_type = ?",1)
     @friend_list=[]
+    @all_posts=[]
     if friend1.any?
       friend1.each do |frnd|
         temp_user=User.find(frnd.recipient_id)
         @friend_list<<temp_user
+        pts=temp_user.posts
+        if pts.any?
+          pts.each do |p|
+            @all_posts<<p
+          end
+        end
+
       end
     end
     if friend2.any?
       friend2.each do |frnd|
         temp_user=User.find(frnd.sender_id)
         @friend_list<<temp_user
+        pts=temp_user.posts
+        if pts.any?
+          pts.each do |p|
+            @all_posts<<p
+          end
+        end
       end
     end
+    my_pts=current_user.posts
+    if my_pts.any?
+      my_pts.each do |p|
+        @all_posts<<p
+      end
+    end
+    @all_posts= @all_posts.sort_by &:created_at
+    @all_posts.reverse!
+     # raise @all_posts.inspect
   end
 
   def show

@@ -25,8 +25,26 @@
     </div></div>
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="">
-        <textarea class="status_input_field" placeholder="Write something here from your mind....."></textarea><br/>
-        <input type="button" class="post_submit_button" value="Post">
+        <span>Create a status....</span>
+        <%= form_for [@cuuser, @post], remote: true do |f| %>
+            <p><%= f.text_field :title, :class=>"status_title_input_field", :placeholder=>"Title ..." %><p/>
+            <%= f.text_area :body, :class=>"status_input_field", :placeholder=>"Write something here....." %><br/>
+            <%= f.submit 'Post'%>
+        <% end %>
+      </div>
+      <div class="posts_container">
+        <% @all_posts.each do |pst| %>
+        <div class="single_post">
+          <div class="post_title">
+            <% if pst.user.profilepic.present? %>
+                <%= image_tag(pst.user.profilepic) %>
+            <% else %>
+                <img src="/image/profile-image2.gif" />
+            <% end %>
+            <span class="user"> <%= pst.user.email %> </span><%= pst.title %></div>
+          <div class="post_body"><%= pst.body %></div>
+        </div>
+        <% end %>
       </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3"></div>

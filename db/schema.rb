@@ -24,9 +24,12 @@ ActiveRecord::Schema.define(version: 20150202114225) do
   create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "body"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "user_friends", force: true do |t|
     t.integer  "sender_id"
