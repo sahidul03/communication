@@ -94,6 +94,16 @@ $(document).ready(function(){
                var like=$(this).html();
                if(like=='Like'){
                    $(this).html('Liked').css('color','green');
+                   var like_comment=$(this).parent();
+                   var ll=like_comment.find('.number').html();
+                   if(ll){
+                       like_comment.find('.number').html(parseInt(ll)+1);
+                       like_comment.find('.unit').html('Likes');
+                   }
+                   else{
+                       var str=$('<span class="number">1</span><span class="unit"> Like</span>');
+                       like_comment.append(str);
+                   }
                    var post_id=$(this).parent().parent().data('postid')
                    $.ajax({
                        url: '<%= Rails.application.routes.url_helpers.post_like_users_path %>',

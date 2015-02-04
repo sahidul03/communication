@@ -41,7 +41,7 @@
             <% else %>
                 <img src="/image/profile-image2.gif" />
             <% end %>
-          <span class="user"> <%= pst.user.email %> </span><%= pst.title %></div>
+          <span class="user"> <%= pst.user.email %> </span><%= pst.title if pst.title %></div>
           <div class="post_body">
             <div class="body_part"><%= pst.body %></div>
           </div>
@@ -52,6 +52,16 @@
                 <% else %>
                     <span class="like">Like</span>
                 <% end %>
+                <span class="all_likes">
+                  <span class="number"><%= pst.like.split(',').length %></span>
+                  <span class="unit">
+                    <% if pst.like.split(',').length==1 %>
+                      Like
+                    <% else %>
+                      Likes
+                    <% end %>
+                  </span>
+                </span>
             <% else %>
                 <span class="like">Like</span>
             <% end %>
