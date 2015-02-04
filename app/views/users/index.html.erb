@@ -46,7 +46,15 @@
             <div class="body_part"><%= pst.body %></div>
           </div>
           <div class="like_comment_part">
-            <span class="like">Like</span>
+            <% if pst.like!=nil %>
+                <% if pst.like.split(',').include?(@cuuser.id.to_s) %>
+                    <span style="color: green" class="like">Liked</span>
+                <% else %>
+                    <span class="like">Like</span>
+                <% end %>
+            <% else %>
+                <span class="like">Like</span>
+            <% end %>
           </div>
         </div>
         <% end %>
