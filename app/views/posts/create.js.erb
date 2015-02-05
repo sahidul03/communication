@@ -1,6 +1,6 @@
 $('.status_input_field').val('');
 $('.status_title_input_field').val('');
-$('.posts_container').prepend('<%= escape_javascript render("posts/post_create") %>');
+$('.posts_container').prepend($('<%= escape_javascript render("posts/post_create") %>').fadeIn('slow'));
 $('.single_post .like_comment_part .like').click(function(){
     var like=$(this).html();
     if(like=='Like'){
