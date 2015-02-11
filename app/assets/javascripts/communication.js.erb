@@ -136,6 +136,16 @@ $(document).ready(function(){
 
             };
         };
+        this.PostDelete=new function(){
+            $('.single_post .post_delete').click(function(){
+                var post_id=$(this).parent().parent().data('postid')
+                $.ajax({
+                    url: '<%= Rails.application.routes.url_helpers.post_delete_users_path %>',
+                    data: {post_id:post_id},
+                    type: 'get'
+                });
+            });
+        };
         this.Events=new function(){
             $('.frnd_search_field_and_container').click(function(e){
                 e.stopPropagation();

@@ -6,7 +6,9 @@
     <% else %>
         <img src="/image/profile-image2.gif" />
     <% end %>
-    <span class="user"> <%= @post.user.email %> </span><%= @post.title if @post.title %></div>
+    <span class="user"> <%= @post.user.email %> </span><%= @post.title if @post.title %>
+    <img class="post_delete" src="/image/cancel.png" />
+  </div>
   <div class="post_body">
     <div class="body_part"><%= @post.body %></div>
   </div>

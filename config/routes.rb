@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get "post_create"
       get "post_like"
       get "show_all_likes"
+      get "post_delete"
     end
   end
   resources :messages do

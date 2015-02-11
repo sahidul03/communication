@@ -171,6 +171,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def post_delete
+    @post=Post.find(params[:post_id])
+    if @post.user.id==current_user.id
+      if @post.destroy
+        @post_deleted_falg="true"
+      else
+        @post_deleted_falg="false"
+      end
+    end
+  end
+
   protected
   def common_method
     @user_id=current_user.id

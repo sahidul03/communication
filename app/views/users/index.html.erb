@@ -45,7 +45,11 @@
             <% else %>
                 <img src="/image/profile-image2.gif" />
             <% end %>
-          <span class="user"> <%= pst.user.email %> </span><%= pst.title if pst.title %></div>
+          <span class="user"> <%= pst.user.email %> </span><%= pst.title if pst.title %>
+          <% if pst.user.id==@cuuser.id %>
+                <img class="post_delete" src="/image/cancel.png" />
+          <% end %>
+          </div>
           <div class="post_body">
             <div class="body_part"><%= pst.body %></div>
           </div>
