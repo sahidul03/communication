@@ -90,28 +90,51 @@ $(document).ready(function(){
             });
         };
         this.PostLike=new function(){
-           $('.single_post .like_comment_part .like').click(function(){
-               var like=$(this).html();
-               if(like=='Like'){
-                   $(this).html('Liked').css('color','green');
-                   var like_comment=$(this).parent();
-                   var ll=like_comment.find('.number').html();
-                   if(ll){
-                       like_comment.find('.number').html(parseInt(ll)+1);
-                       like_comment.find('.unit').html('Likes');
-                   }
-                   else{
-                       var str=$('<span class="number">1</span><span class="unit"> Like</span>');
-                       like_comment.append(str);
-                   }
-                   var post_id=$(this).parent().parent().data('postid')
-                   $.ajax({
-                       url: '<%= Rails.application.routes.url_helpers.post_like_users_path %>',
-                       data: {post_id:post_id},
-                       type: 'get'
-                   });
-               }
-           });
+            this.LikeClick=new function(){
+                $('.single_post .like_comment_part .like').click(function(){
+                    var like=$(this).html(),str;
+                    if(like=='Like'){
+                        $(this).html('Liked').css('color','green');
+                        var like_comment=$(this).parent();
+                        var ll=like_comment.find('.number').html();
+                        if(ll){
+                            like_comment.find('.number').html(parseInt(ll)+1);
+                            like_comment.find('.unit').html('Likes');
+                        }
+                        else{
+                            str=$('<span class="all_likes"><span class="number">1</span><span class="unit"> Like</span></span>');
+                            like_comment.append(str);
+                        }
+                        var post_id=$(this).parent().parent().data('postid')
+                        $.ajax({
+                            url: '<%= Rails.application.routes.url_helpers.post_like_users_path %>',
+                            data: {post_id:post_id},
+                            type: 'get'
+                        });
+                    }
+                });
+            };
+            this.ShowAllLikes=new function(){
+                $('.single_post .like_comment_part .all_likes').mouseenter(function(){
+                    $(this).addClass('showalllikesActive');
+                    var post_id=$(this).parent().parent().data('postid')
+                    $.ajax({
+                        url: '<%= Rails.application.routes.url_helpers.show_all_likes_users_path %>',
+                        data: {post_id:post_id},
+                        type: 'get'
+                    });
+                });
+                $('.single_post .like_comment_part .all_likes').mouseleave(function(){
+                    $(this).removeClass('showalllikesActive');
+                    $('.alllikesholder').remove();
+                });
+//                $('.single_post .like_comment_part .all_likes').mouseenter(function(){
+//                    var likers_list=$(this).data("likers");
+//                    alert(likers_list)
+//
+//                });
+
+            };
         };
         this.Events=new function(){
             $('.frnd_search_field_and_container').click(function(e){

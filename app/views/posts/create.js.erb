@@ -12,7 +12,7 @@ $('.single_post .like_comment_part .like').click(function(){
             like_comment.find('.unit').html('Likes');
         }
         else{
-            var str=$('<span class="number">1</span><span class="unit"> Like</span>');
+            var str=$('<span class="all_likes"><span class="number">1</span><span class="unit"> Like</span></span>');
             like_comment.append(str);
         }
         var post_id=$(this).parent().parent().data('postid')

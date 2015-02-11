@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get "load_received_friend_request_list"
       get "post_create"
       get "post_like"
+      get "show_all_likes"
     end
   end
   resources :messages do

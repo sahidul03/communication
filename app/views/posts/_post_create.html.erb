@@ -1,3 +1,4 @@
+<% if @post_created_flag %>
 <div class="single_post" data-postid="<%= @post.id %>">
   <div class="post_title">
     <% if @post.user.profilepic.present? %>
@@ -13,3 +14,4 @@
             <span class="like">Like</span>
   </div>
 </div>
+<% end %>

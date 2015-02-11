@@ -2,7 +2,9 @@ class PostsController < ApplicationController
 
   def create
     @post=current_user.posts.new(post_params)
-    @post.save
+    if @post.save
+      @post_created_flag=true
+    end
   end
 
   def post_like

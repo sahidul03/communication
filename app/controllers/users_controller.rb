@@ -145,28 +145,30 @@ class UsersController < ApplicationController
   def post_like
     post=Post.find(params[:post_id])
     like=post.like
-    # if like==''
-    #   like=current_user.id.to_s;
-    # else
-    #   like=like+','+current_user.id.to_s
-    # end
-    # post.update(:like=>like)
-    # post=Post.find(17)
-    # like=post.like
     if like==nil || like==''
       like=current_user.id.to_s;
-      # raise like.inspect
     else
       like_arry=like.split(',')
-      # raise like_arry.inspect
       unless like_arry.include?(current_user.id.to_s)
         like=like+','+current_user.id.to_s
-        # raise like.inspect
       end
-      # like=like+','+current_user.id.to_s
     end
     post.update(:like=>like)
+  end
 
+  def show_all_likes
+    post=Post.find(params[:post_id])
+    like=post.like
+    like_arry=like.split(',')
+    @likers_list=[]
+    like_arry.each do |u_id|
+      if u_id==current_user.id
+        @likers_list<<"You"
+      else
+        us=User.find(u_id)
+        @likers_list<<us.name
+      end
+    end
   end
 
   protected
