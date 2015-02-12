@@ -1,5 +1,12 @@
+if($('.chatbar .chat_barAndMessage_container').data('LastDate')=='blank'){
+    $('.chatbar .chat_barAndMessage_container').data('LastDate',"<%= @sortedallmessage.any? ? @sortedallmessage.last.created_at.strftime('%Y-%m-%d %H:%M:%S.%N') : "blank" %>")
+}
+else{
+    $('.chatbar .chat_barAndMessage_container').data('LastDate',"<%= @sortedallmessage.last.created_at.strftime('%Y-%m-%d %H:%M:%S.%N') if @sortedallmessage.any? %>")
+}
 
-$('.chatbar .chat_barAndMessage_container').html('<%= escape_javascript render("messages/message_build") %>');
 
-var seclectmessagecontainer=$('.chatbar .chat_barAndMessage_container');
-seclectmessagecontainer.scrollTop(seclectmessagecontainer.prop("scrollHeight"));
+$('.chatbar .chat_barAndMessage_container').append('<%= escape_javascript render("messages/message_build") %>');
+
+//var seclectmessagecontainer=$('.chatbar .chat_barAndMessage_container');
+//seclectmessagecontainer.scrollTop(seclectmessagecontainer.prop("scrollHeight"));
