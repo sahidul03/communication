@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :users do
+    resources :posts
     collection do
       get "search_friend"
       get "add_friend_request"
@@ -13,6 +14,9 @@ Rails.application.routes.draw do
       get "cancel_friend_request_ajax"
       get "load_received_friend_request_list"
       get "post_create"
+      get "post_like"
+      get "show_all_likes"
+      get "post_delete"
     end
   end
   resources :messages do
@@ -20,7 +24,7 @@ Rails.application.routes.draw do
       get "message_load"
     end
   end
-  resources :posts
+
 
   # devise_for :users, controllers: {registrations: 'registrations'}
   root :to => redirect('/users')

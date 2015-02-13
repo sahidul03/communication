@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202114225) do
+ActiveRecord::Schema.define(version: 20150203112117) do
 
   create_table "messages", force: true do |t|
     t.text     "body"
@@ -24,9 +24,13 @@ ActiveRecord::Schema.define(version: 20150202114225) do
   create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "body"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "like"
   end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "user_friends", force: true do |t|
     t.integer  "sender_id"

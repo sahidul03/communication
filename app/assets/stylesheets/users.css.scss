@@ -45,7 +45,7 @@
   color: darkslategray;
 }
 .chatbar{
-  position: absolute;
+  position: fixed;
   bottom: 5px;
   right: 10px;
   border: 1px solid #dadada;
@@ -129,7 +129,21 @@ width: 250px;
   box-shadow: 2px 2px 4px #979393;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color=#979393); /*IE 5.5-7*/
 
+}
 
+.serched_friend_list_container div{
+  background: none repeat scroll 0 0 #dadada;
+  height: 37px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  padding-left: 5px;
+}
+.serched_friend_list_container div .email{
+  margin-top: 5px;
+}
+.serched_friend_list_container img{
+  height: 35px;
+  float: right;
 }
 .add_friend_request{
 }
@@ -169,4 +183,91 @@ width: 250px;
 .status_input_field{
   width: 300px;
   height: 50px;
+  border: 1px solid rgba(153, 153, 153, 0.56);
+  border-radius: 3px;
+}
+.status_title_input_field{
+  width: 300px;
+  border: 1px solid rgba(153, 153, 153, 0.56);
+  border-radius: 3px;
+}
+.single_post .post_title{
+  background-color: #CCCCCC;
+  padding-left: 1px;
+}
+.single_post .post_title .user{
+  background-color: green;
+  color: #ffffff;
+  margin-right: 30px;
+  margin-left: 4px;
+  border-radius: 3px;
+  padding-left: 5px;
+}
+.single_post .post_title img{
+  height: 35px;
+  border-radius: 3px;
+}
+.single_post .post_title .post_delete{
+  height: 18px;
+  margin: 5px;
+  float: right;
+  cursor: pointer;
+}
+.single_post .post_body{
+  background-color: #dff0d8;
+  padding-left: 10px;
+  min-height: 45px;
+  padding-top: 5px;
+}
+.single_post .post_body .body_part{
+  min-height: 40px;
+}
+.single_post .like_comment_part{
+  background-color: rgba(152, 165, 150, 0.52);
+  padding-left: 7px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.single_post .like_comment_part .like{
+  cursor: pointer;
+}
+
+.single_post{
+  margin-top: 15px;
+  border: 1px solid #dadada;
+  border-radius: 6px;
+}
+.all_likes{
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+}
+.alllikesholder{
+  border: 1px solid #dadada;
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  background-color: #000000;
+  color: white;
+  opacity: .7;
+  max-height: 250px;
+  overflow: auto;
+}
+.alllikesholder .likes_row{
+min-width: 120px;
+margin-left: 5px;
+margin-right: 5px;
+}
+.alert_for_new_conversation{
+  position: absolute;
+  top: 23px;
+  left: 0px;
+  background-color: antiquewhite;
+  opacity: 1.7;
+  width: 228px;
+  color: green;
+  text-align: center;
+  font-weight: bold;
+  display: none;
 }

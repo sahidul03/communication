@@ -1,0 +1,8 @@
+if("<%= @post_deleted_falg%>"=="true"){
+    $('.single_post').each(function(){
+        var post_id=$(this).data('postid');
+        if(post_id=="<%= @post.id %>"){
+            $(this).remove();
+        }
+    });
+}

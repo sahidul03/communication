@@ -1,5 +1,14 @@
 <% if @searched_friend.any?  %>
     <% @searched_friend.each do |frnd|  %>
-        <div><%= link_to frnd.email, frnd %></div>
+
+          <%= link_to frnd do %>
+          <div>
+            <span class="email"><%= frnd.email %></span>
+            <% if frnd.profilepic.present? %>
+                <%= image_tag(frnd.profilepic) %>
+            <% end %>
+          </div>
+          <% end %>
+
     <% end %>
 <% end %>

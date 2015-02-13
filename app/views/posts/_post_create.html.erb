@@ -1,0 +1,19 @@
+<% if @post_created_flag %>
+<div class="single_post" data-postid="<%= @post.id %>">
+  <div class="post_title">
+    <% if @post.user.profilepic.present? %>
+        <%= image_tag(@post.user.profilepic) %>
+    <% else %>
+        <img src="/image/profile-image2.gif" />
+    <% end %>
+    <span class="user"> <%= @post.user.email %> </span><%= @post.title if @post.title %>
+    <img class="post_delete" src="/image/cancel.png" />
+  </div>
+  <div class="post_body">
+    <div class="body_part"><%= @post.body %></div>
+  </div>
+  <div class="like_comment_part">
+            <span class="like">Like</span>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,7 @@
+var like_container=$('.single_post .like_comment_part .all_likes');
+like_container.each(function(){
+    if($(this).hasClass('showalllikesActive')){
+        $(this).append('<%= escape_javascript render("users/show_all_likes") %>')
+    }
+});
+
