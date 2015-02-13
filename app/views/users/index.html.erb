@@ -14,6 +14,7 @@
   <br/>
   <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3">
+      <% if @friend_list.any? %>
       <div class="chatting_contacts_container">
       <% @friend_list.each do |friend| %>
           <% if friend.id!=@user_id %>
@@ -22,17 +23,66 @@
               </div>
           <% end %>
       <% end %>
-    </div></div>
+      </div>
+      <% end %>
+    </div>
+
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="">
-        <textarea class="status_input_field" placeholder="Write something here from your mind....."></textarea><br/>
-        <input type="button" class="post_submit_button" value="Post">
+        <span>Create a status....</span>
+        <%= form_for [@cuuser, @post], remote: true do |f| %>
+            <p><%= f.text_field :title, :class=>"status_title_input_field", :placeholder=>"Title ..." %><p/>
+            <%= f.text_area :body, :class=>"status_input_field", :placeholder=>"Write something here....." %><br/>
+            <%= f.submit 'Post'%>
+        <% end %>
+      </div>
+      <div class="posts_container">
+        <% @all_posts.each do |pst| %>
+        <div class="single_post" data-postid="<%= pst.id %>">
+          <div class="post_title">
+            <% if pst.user.profilepic.present? %>
+                <%= image_tag(pst.user.profilepic) %>
+            <% else %>
+                <img src="/image/profile-image2.gif" />
+            <% end %>
+          <span class="user"> <%= pst.user.email %> </span><%= pst.title if pst.title %>
+          <% if pst.user.id==@cuuser.id %>
+                <img class="post_delete" src="/image/cancel.png" />
+          <% end %>
+          </div>
+          <div class="post_body">
+            <div class="body_part"><%= pst.body %></div>
+          </div>
+          <div class="like_comment_part">
+            <% if pst.like!=nil %>
+                <% if pst.like.split(',').include?(@cuuser.id.to_s) %>
+                    <span style="color: green" class="like">Liked</span>
+                <% else %>
+                    <span class="like">Like</span>
+                <% end %>
+                <span class="all_likes">
+                  <span class="number"><%= pst.like.split(',').length %></span>
+                  <span class="unit">
+                    <% if pst.like.split(',').length==1 %>
+                      Like
+                    <% else %>
+                      Likes
+                    <% end %>
+                  </span>
+                </span>
+            <% else %>
+                <span class="like">Like</span>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3"></div>
   </div>
 
   <div class="chatbar">
+    <div class="alert_for_new_conversation">Get new conversation</div>
     <div class="titlebar">
       <span class="username">Name</span>
       <img src="/image/cancel.png" />

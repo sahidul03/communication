@@ -13,6 +13,8 @@ $(document).ready(function(){
                 var user=$(this).data('userinfo');
                 chat_bar.find('.titlebar .username').html(user['email']).data('user',user);
                 chat_bar.find('#recipient_id').val(user['id']);
+                chat_bar.find('.chat_barAndMessage_container').html("");
+                chat_bar.find('.chat_barAndMessage_container').data("LastDate","blank");
                 chat_bar.show();
                 that.MessageLoad(user['id']);
             });
@@ -26,6 +28,7 @@ $(document).ready(function(){
             this.ContainerHide=new function(){
                 chat_bar.find('.titlebar img').click(function(e){
                     e.stopPropagation();
+                    chat_bar.find('.chat_barAndMessage_container').data("LastDate","blank");
                     chat_bar.hide();
                 });
                 chat_bar.find('.titlebar').click(function(){
@@ -48,9 +51,10 @@ $(document).ready(function(){
             });
         };
         this.MessageLoad= function(recipient_id){
+            LastDate="blank"
             $.ajax({
                 url: '<%= Rails.application.routes.url_helpers.message_load_messages_path %>',
-                data: {recipient_id: recipient_id},
+                data: {recipient_id: recipient_id,LastDate:LastDate},
                 type: 'get'
 
             });
@@ -59,12 +63,12 @@ $(document).ready(function(){
             setInterval(function(){
                 if($(".chatbar").is(":visible")) {
                     var user = $('.chatbar .titlebar .username').data('user');
+                    var LastDate = $('.chatbar .chat_barAndMessage_container').data('LastDate');
                     var recipient_id = user['id'];
                     $.ajax({
                         url:'<%= Rails.application.routes.url_helpers.message_load_messages_path %>',
-                        data: {recipient_id: recipient_id},
+                        data: {recipient_id: recipient_id,LastDate:LastDate},
                         type: 'get'
-
                     });
                 }
             },1000)
@@ -87,6 +91,63 @@ $(document).ready(function(){
                         type: 'get'
                     });
                 }
+            });
+        };
+        this.PostLike=new function(){
+            this.LikeClick=new function(){
+                $('.single_post .like_comment_part .like').click(function(){
+                    var like=$(this).html(),str;
+                    if(like=='Like'){
+                        $(this).html('Liked').css('color','green');
+                        var like_comment=$(this).parent();
+                        var ll=like_comment.find('.number').html();
+                        if(ll){
+                            like_comment.find('.number').html(parseInt(ll)+1);
+                            like_comment.find('.unit').html('Likes');
+                        }
+                        else{
+                            str=$('<span class="all_likes"><span class="number">1</span><span class="unit"> Like</span></span>');
+                            like_comment.append(str);
+                        }
+                        var post_id=$(this).parent().parent().data('postid')
+                        $.ajax({
+                            url: '<%= Rails.application.routes.url_helpers.post_like_users_path %>',
+                            data: {post_id:post_id},
+                            type: 'get'
+                        });
+                    }
+                });
+            };
+            this.ShowAllLikes=new function(){
+                $('.single_post .like_comment_part .all_likes').mouseenter(function(){
+                    $(this).addClass('showalllikesActive');
+                    var post_id=$(this).parent().parent().data('postid')
+                    $.ajax({
+                        url: '<%= Rails.application.routes.url_helpers.show_all_likes_users_path %>',
+                        data: {post_id:post_id},
+                        type: 'get'
+                    });
+                });
+                $('.single_post .like_comment_part .all_likes').mouseleave(function(){
+                    $(this).removeClass('showalllikesActive');
+                    $('.alllikesholder').remove();
+                });
+//                $('.single_post .like_comment_part .all_likes').mouseenter(function(){
+//                    var likers_list=$(this).data("likers");
+//                    alert(likers_list)
+//
+//                });
+
+            };
+        };
+        this.PostDelete=new function(){
+            $('.single_post .post_delete').click(function(){
+                var post_id=$(this).parent().parent().data('postid')
+                $.ajax({
+                    url: '<%= Rails.application.routes.url_helpers.post_delete_users_path %>',
+                    data: {post_id:post_id},
+                    type: 'get'
+                });
             });
         };
         this.Events=new function(){
@@ -116,9 +177,6 @@ $(document).ready(function(){
                         type: 'get'
                     });
                 }
-            });
-            $('.post_submit_button').click(function(){
-                alert(4)
             });
         };
     };
