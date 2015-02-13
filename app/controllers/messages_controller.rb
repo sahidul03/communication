@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
   def message_load
     @user=current_user
     @recipient=User.find(params[:recipient_id])
-    if(params[:LastDate]=="blank")
+    if(params[:LastDate]=="blank" || params[:LastDate]=="")
       @msgs_sent=current_user.sent_messages.where("recipient_id = ?", params[:recipient_id])
       @msgs_recipient=current_user.received_messages.where("sender_id = ?",params[:recipient_id])
     else

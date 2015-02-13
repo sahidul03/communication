@@ -259,3 +259,15 @@ min-width: 120px;
 margin-left: 5px;
 margin-right: 5px;
 }
+.alert_for_new_conversation{
+  position: absolute;
+  top: 23px;
+  left: 0px;
+  background-color: antiquewhite;
+  opacity: 1.7;
+  width: 228px;
+  color: green;
+  text-align: center;
+  font-weight: bold;
+  display: none;
+}

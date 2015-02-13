@@ -28,6 +28,7 @@ $(document).ready(function(){
             this.ContainerHide=new function(){
                 chat_bar.find('.titlebar img').click(function(e){
                     e.stopPropagation();
+                    chat_bar.find('.chat_barAndMessage_container').data("LastDate","blank");
                     chat_bar.hide();
                 });
                 chat_bar.find('.titlebar').click(function(){

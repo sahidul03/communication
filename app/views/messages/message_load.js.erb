@@ -1,12 +1,30 @@
-if($('.chatbar .chat_barAndMessage_container').data('LastDate')=='blank'){
-    $('.chatbar .chat_barAndMessage_container').data('LastDate',"<%= @sortedallmessage.any? ? @sortedallmessage.last.created_at.strftime('%Y-%m-%d %H:%M:%S.%N') : "blank" %>")
+var seclectmessagecontainer=$('.chatbar .chat_barAndMessage_container');
+var current_scroll_position=seclectmessagecontainer.scrollTop();
+seclectmessagecontainer.scrollTop(seclectmessagecontainer.prop("scrollHeight"));
+var highest_scroll_position=seclectmessagecontainer.scrollTop();
+
+if(seclectmessagecontainer.data('LastDate')=='blank'){
+    seclectmessagecontainer.data('LastDate',"<%= @sortedallmessage.any? ? @sortedallmessage.last.created_at.strftime('%Y-%m-%d %H:%M:%S.%N') : "blank" %>")
 }
 else{
-    $('.chatbar .chat_barAndMessage_container').data('LastDate',"<%= @sortedallmessage.last.created_at.strftime('%Y-%m-%d %H:%M:%S.%N') if @sortedallmessage.any? %>")
+    var current_last_date=seclectmessagecontainer.data('LastDate');
+    seclectmessagecontainer.data('LastDate',"<%= @sortedallmessage.last.created_at.strftime('%Y-%m-%d %H:%M:%S.%N') if @sortedallmessage.any? %>")
+    if(seclectmessagecontainer.data('LastDate')==""){
+        seclectmessagecontainer.data('LastDate',current_last_date);
+    }
 }
+seclectmessagecontainer.append('<%= escape_javascript render("messages/message_build") %>');
+seclectmessagecontainer.scrollTop(seclectmessagecontainer.prop("scrollHeight"));
+var after_append_max_scroll=seclectmessagecontainer.scrollTop();
 
+if(current_scroll_position==highest_scroll_position){
+    seclectmessagecontainer.scrollTop(seclectmessagecontainer.prop("scrollHeight"));
+}
+else{
+    seclectmessagecontainer.scrollTop(current_scroll_position);
+    if(after_append_max_scroll>highest_scroll_position) {
+        $('.chatbar .alert_for_new_conversation').show();
+        $('.chatbar .alert_for_new_conversation').fadeOut(1500);
+    }
 
-$('.chatbar .chat_barAndMessage_container').append('<%= escape_javascript render("messages/message_build") %>');
-
-//var seclectmessagecontainer=$('.chatbar .chat_barAndMessage_container');
-//seclectmessagecontainer.scrollTop(seclectmessagecontainer.prop("scrollHeight"));
+}
