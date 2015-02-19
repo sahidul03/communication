@@ -31,8 +31,8 @@
       <div class="">
         <span>Create a status....</span>
         <%= form_for [@cuuser, @post], remote: true do |f| %>
-            <p><%= f.text_field :title, :class=>"status_title_input_field", :placeholder=>"Title ..." %><p/>
-            <%= f.text_area :body, :class=>"status_input_field", :placeholder=>"Write something here....." %><br/>
+            <p><%= f.text_field :title, :class=>"status_title_input_field", :autocomplete => :off, :placeholder=>"Title ..." %><p/>
+            <%= f.text_area :body, :class=>"status_input_field", :autocomplete => :off, :placeholder=>"Write something here....." %><br/>
             <%= f.submit 'Post'%>
         <% end %>
       </div>
@@ -73,6 +73,7 @@
             <% else %>
                 <span class="like">Like</span>
             <% end %>
+            <span class="comment">Comment</span>
           </div>
         </div>
         <% end %>
@@ -99,7 +100,7 @@
       <div class="MessageInputField">
         <%= form_for @message, remote: true do |f| %>
             <%= hidden_field_tag :recipient_id %>
-            <%= f.text_field :body, :class=>"text_input_field", :placeholder=>"Write something here....." %>
+            <%= f.text_field :body, :class=>"text_input_field",:autocomplete => :off, :placeholder=>"Write something here....." %>
             <%= f.submit :class=>"hidden_class" %>
         <% end %>
 

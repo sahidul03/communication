@@ -144,6 +144,7 @@ width: 250px;
 .serched_friend_list_container img{
   height: 35px;
   float: right;
+  width: 30px;
 }
 .add_friend_request{
 }
@@ -231,7 +232,11 @@ width: 250px;
 .single_post .like_comment_part .like{
   cursor: pointer;
 }
-
+.single_post .like_comment_part .comment{
+  float: right;
+  margin-right: 12px;
+  cursor: pointer;
+}
 .single_post{
   margin-top: 15px;
   border: 1px solid #dadada;

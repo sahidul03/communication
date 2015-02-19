@@ -150,6 +150,14 @@ $(document).ready(function(){
                 });
             });
         };
+        this.PostComment=new function(){
+            this.CommentFormLoad=new function(){
+                $('.single_post .like_comment_part .comment').click(function(){
+                    $('.single_post .like_comment_part .comment').css('color','black');
+                    $(this).css('color','red');
+                });
+            };
+        };
         this.Events=new function(){
             $('.frnd_search_field_and_container').click(function(e){
                 e.stopPropagation();
