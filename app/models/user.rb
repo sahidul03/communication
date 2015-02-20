@@ -13,5 +13,6 @@ class User < ActiveRecord::Base
   has_many :received_request, class_name: "UserFriend", foreign_key: "recipient_id"
 
   has_many :posts
+  has_many :comments
 
 end

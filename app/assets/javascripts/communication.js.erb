@@ -153,8 +153,30 @@ $(document).ready(function(){
         this.PostComment=new function(){
             this.CommentFormLoad=new function(){
                 $('.single_post .like_comment_part .comment').click(function(){
-                    $('.single_post .like_comment_part .comment').css('color','black');
-                    $(this).css('color','red');
+                    var comment_form=$('<div class="comment_form">'+
+                                          '<div contenteditable="true" class="comment_text_field" data-placeholder="Comment here..."></div>'+
+                                       '</div>');
+                    if($(this).parent().siblings('.comment_container').find('.comment_form').length===0) {
+                        $('.single_post .comment_container .comment_form').remove();
+                        $(this).parent().siblings('.comment_container').append(comment_form);
+                    }
+                    comment_form.find('.comment_text_field').keypress(function(e){
+                        var code= e.which || e.keyCode;
+                        if ($(this).is(':empty') && code==32) {
+                            e.preventDefault();
+                        }
+                        if(code == 13){
+                            e.preventDefault();
+                            var post_id=$(this).parent().parent().parent().data('postid'),body=$(this).html();
+                            $.ajax({
+                                url: '<%= Rails.application.routes.url_helpers.post_comment_users_path %>',
+                                data: {post_id:post_id,body:body},
+                                type: 'get'
+                            });
+                        }
+
+                    });
+
                 });
             };
         };
