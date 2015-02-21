@@ -182,6 +182,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def post_comment
+    @post=Post.find(params[:post_id])
+    @comment=@post.comments.new(:user_id=>current_user.id,:body=>params[:body])
+    if @comment.save
+      @post_comment_flag="true"
+    else
+      @post_comment_flag="false"
+    end
+  end
+
+
   protected
   def common_method
     @user_id=current_user.id
@@ -189,6 +200,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :username, :password, :reset_password);
+  end
+  def comment_params
+    params.require(:comment).permit(:like).merge(user_id: current_user.id, body: params[:body]);
   end
 
 
