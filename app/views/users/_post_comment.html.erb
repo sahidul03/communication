@@ -1,0 +1,9 @@
+<div class="single_comment">
+  <% if current_user.profilepic.present? %>
+      <%= image_tag(current_user.profilepic) %>
+  <% else %>
+      <img src="/image/profile-image2.gif" />
+  <% end %>
+  <span class="commenter"><%= current_user.name %></span>
+  <span class="comment_body"> <%= @comment.body %></span>
+</div>

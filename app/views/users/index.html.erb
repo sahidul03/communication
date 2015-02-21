@@ -76,11 +76,20 @@
             <span class="comment">Comment</span>
           </div>
           <div class="comment_container">
-            <!--<div class="comment_form">-->
-              <!--<div contenteditable="true" class="comment_text_field" data-placeholder="Comment here..."></div>-->
-            <!--</div>-->
             <div class="comments">
-              Comments
+              <% if pst.comments.any? %>
+                <% pst.comments.each do |cmnt|  %>
+                  <div class="single_comment">
+                    <% if cmnt.user.profilepic.present? %>
+                        <%= image_tag(cmnt.user.profilepic) %>
+                    <% else %>
+                        <img src="/image/profile-image2.gif" />
+                    <% end %>
+                    <span class="commenter"><%= cmnt.user.name %></span>
+                    <span class="comment_body"> <%= cmnt.body %></span>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

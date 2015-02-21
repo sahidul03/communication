@@ -167,12 +167,16 @@ $(document).ready(function(){
                         }
                         if(code == 13){
                             e.preventDefault();
-                            var post_id=$(this).parent().parent().parent().data('postid'),body=$(this).html();
-                            $.ajax({
-                                url: '<%= Rails.application.routes.url_helpers.post_comment_users_path %>',
-                                data: {post_id:post_id,body:body},
-                                type: 'get'
-                            });
+                            var post_id=$(this).parent().parent().parent().data('postid'),body=$(this).text();
+                            if(body!='') {
+                                $.ajax({
+                                    url: '<%= Rails.application.routes.url_helpers.post_comment_users_path %>',
+                                    data: {post_id: post_id, body: body},
+                                    type: 'get'
+                                });
+                                $(this).html("");
+                            }
+
                         }
 
                     });

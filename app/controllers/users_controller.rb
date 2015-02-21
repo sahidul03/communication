@@ -184,8 +184,12 @@ class UsersController < ApplicationController
 
   def post_comment
     @post=Post.find(params[:post_id])
-    comment=@post.comments.new(:user_id=>current_user.id,:body=>params[:body])
-    comment.save
+    @comment=@post.comments.new(:user_id=>current_user.id,:body=>params[:body])
+    if @comment.save
+      @post_comment_flag="true"
+    else
+      @post_comment_flag="false"
+    end
   end
 
 
