@@ -38,6 +38,7 @@ gem 'spring',        group: :development
 gem 'devise'
 
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 # gem 'carrierwave'
 
