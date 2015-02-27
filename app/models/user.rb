@@ -19,6 +19,20 @@ class User < ActiveRecord::Base
   has_many :comments
 
 
+  def self.from_omniauth_linkedin(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      if(user.email.blank?)
+        user.email = auth.info.email
+      end
+      user.username=auth.info.username
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+      user.profilepic = auth.info.image # assuming the user model has an image
+
+      # user.save!
+      UserMailer.signup_confirmation(user).deliver
+    end
+  end
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -39,11 +53,10 @@ class User < ActiveRecord::Base
       # user.remote_profilepic_url = auth.info.image
 
 
-      user.save!
+      # user.save!
       UserMailer.signup_confirmation(user).deliver
     end
   end
-
 
 
 

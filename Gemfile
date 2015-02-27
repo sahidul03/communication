@@ -38,8 +38,8 @@ gem 'spring',        group: :development
 gem 'devise'
 
 gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-
+# gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
 # gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
