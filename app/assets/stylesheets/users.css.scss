@@ -55,6 +55,28 @@
   display: none;
   background-color: #ffffff;
 }
+.chatbar2{
+  position: fixed;
+  bottom: 5px;
+  right: 245px;
+  border: 1px solid #dadada;
+  border-radius: 6px;
+  width: 230px;
+  max-height: 275px;
+  display: none;
+  background-color: #ffffff;
+}
+.chatbar3{
+  position: fixed;
+  bottom: 5px;
+  right: 480px;
+  border: 1px solid #dadada;
+  border-radius: 6px;
+  width: 230px;
+  max-height: 275px;
+  display: none;
+  background-color: #ffffff;
+}
 .chat_barAndMessage_container{
   height: 209px;
   overflow: auto;
@@ -91,6 +113,32 @@
 
 }
 .chatbar .titlebar img{
+  float: right;
+  width: 21px;
+  cursor: pointer;
+}
+.chatbar2 .titlebar{
+  text-align: center;
+  background-color: gray;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding-top: 3px;
+
+}
+.chatbar2 .titlebar img{
+  float: right;
+  width: 21px;
+  cursor: pointer;
+}
+.chatbar3 .titlebar{
+  text-align: center;
+  background-color: gray;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding-top: 3px;
+
+}
+.chatbar3 .titlebar img{
   float: right;
   width: 21px;
   cursor: pointer;

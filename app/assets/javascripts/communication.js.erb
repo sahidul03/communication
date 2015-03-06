@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var Commu=new function(){
-        var that=this,chat_bar=$('.chatbar');
+        var that=this,chat_bar=$('.chatbar'),Global_chat_bar_flag=0;
         this.ContactList=new function(){
             var selectcontact=$('.contacts');
             selectcontact.mouseover(function(){

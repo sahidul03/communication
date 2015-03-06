@@ -78,7 +78,7 @@
           <div class="comment_container">
             <div class="comments">
               <% if pst.comments.any? %>
-                <% pst.comments.each do |cmnt|  %>
+                <% pst.comments.reverse.each do |cmnt|  %>
                   <div class="single_comment">
                     <% if cmnt.user.profilepic.present? %>
                         <%= image_tag(cmnt.user.profilepic) %>
@@ -100,6 +100,58 @@
   </div>
 
   <div class="chatbar">
+    <div class="alert_for_new_conversation">Get new conversation</div>
+    <div class="titlebar">
+      <span class="username">Name</span>
+      <img src="/image/cancel.png" />
+
+    </div>
+    <div class="ChatContentField">
+      <div class="chat_barAndMessage_container">
+        <!--<div class="every_message">-->
+        <!--<div class="username">Sahid</div>-->
+        <!--<div class="body">It's a pleasure to meet you</div>-->
+        <!--<div class="datetime">16.1.2015</div>-->
+        <!--</div>-->
+      </div>
+      <div class="MessageInputField">
+        <%= form_for @message, remote: true do |f| %>
+            <%= hidden_field_tag :recipient_id %>
+            <%= f.text_field :body, :class=>"text_input_field",:autocomplete => :off, :placeholder=>"Write something here....." %>
+            <%= f.submit :class=>"hidden_class" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="chatbar2">
+    <div class="alert_for_new_conversation">Get new conversation</div>
+    <div class="titlebar">
+      <span class="username">Name</span>
+      <img src="/image/cancel.png" />
+
+    </div>
+    <div class="ChatContentField">
+      <div class="chat_barAndMessage_container">
+        <!--<div class="every_message">-->
+        <!--<div class="username">Sahid</div>-->
+        <!--<div class="body">It's a pleasure to meet you</div>-->
+        <!--<div class="datetime">16.1.2015</div>-->
+        <!--</div>-->
+      </div>
+      <div class="MessageInputField">
+        <%= form_for @message, remote: true do |f| %>
+            <%= hidden_field_tag :recipient_id %>
+            <%= f.text_field :body, :class=>"text_input_field",:autocomplete => :off, :placeholder=>"Write something here....." %>
+            <%= f.submit :class=>"hidden_class" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="chatbar3">
     <div class="alert_for_new_conversation">Get new conversation</div>
     <div class="titlebar">
       <span class="username">Name</span>
