@@ -78,7 +78,7 @@
           <div class="comment_container">
             <div class="comments">
               <% if pst.comments.any? %>
-                <% pst.comments.each do |cmnt|  %>
+                <% pst.comments.reverse.each do |cmnt|  %>
                   <div class="single_comment">
                     <% if cmnt.user.profilepic.present? %>
                         <%= image_tag(cmnt.user.profilepic) %>
