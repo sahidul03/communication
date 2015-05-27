@@ -119,7 +119,7 @@ $(document).ready(function(){
                 });
             };
             this.ShowAllLikes=new function(){
-                $('.single_post .like_comment_part .all_likes').mouseenter(function(){
+                $('.posts_container').on("mouseenter",'.single_post .like_comment_part .all_likes',function(){
                     $(this).addClass('showalllikesActive');
                     var post_id=$(this).parent().parent().data('postid')
                     $.ajax({
@@ -128,20 +128,15 @@ $(document).ready(function(){
                         type: 'get'
                     });
                 });
-                $('.single_post .like_comment_part .all_likes').mouseleave(function(){
+                $('.posts_container').on("mouseleave",'.single_post .like_comment_part .all_likes',function(){
                     $(this).removeClass('showalllikesActive');
                     $('.alllikesholder').remove();
                 });
-//                $('.single_post .like_comment_part .all_likes').mouseenter(function(){
-//                    var likers_list=$(this).data("likers");
-//                    alert(likers_list)
-//
-//                });
 
             };
         };
         this.PostDelete=new function(){
-            $('.single_post .post_delete').click(function(){
+            $('.posts_container').on('click','.single_post .post_delete',function(){
                 var post_id=$(this).parent().parent().data('postid')
                 $.ajax({
                     url: '<%= Rails.application.routes.url_helpers.post_delete_users_path %>',

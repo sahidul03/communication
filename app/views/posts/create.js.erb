@@ -23,14 +23,6 @@ $('.single_post .like_comment_part .like').click(function(){
         });
     }
 });
-$('.single_post .post_delete').click(function(){
-    var post_id=$(this).parent().parent().data('postid')
-    $.ajax({
-        url: '<%= Rails.application.routes.url_helpers.post_delete_users_path %>',
-        data: {post_id:post_id},
-        type: 'get'
-    });
-});
 
 
 $('.single_post .like_comment_part .comment').click(function(){
