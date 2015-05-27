@@ -95,7 +95,7 @@ $(document).ready(function(){
         };
         this.PostLike=new function(){
             this.LikeClick=new function(){
-                $('.single_post .like_comment_part .like').click(function(){
+                $('.posts_container').on('click','.single_post .like_comment_part .like',function(){
                     var like=$(this).html(),str;
                     if(like=='Like'){
                         $(this).html('Liked').css('color','green');
@@ -147,10 +147,10 @@ $(document).ready(function(){
         };
         this.PostComment=new function(){
             this.CommentFormLoad=new function(){
-                $('.single_post .like_comment_part .comment').click(function(){
+                $('.posts_container').on('click','.single_post .like_comment_part .comment',function(){
                     var comment_form=$('<div class="comment_form">'+
-                                          '<div contenteditable="true" class="comment_text_field" data-placeholder="Comment here..."></div>'+
-                                       '</div>');
+                            '<div contenteditable="true" class="comment_text_field" data-placeholder="Comment here..."></div>'+
+                            '</div>');
                     if($(this).parent().siblings('.comment_container').find('.comment_form').length===0) {
                         $('.single_post .comment_container .comment_form').remove();
                         $(this).parent().siblings('.comment_container').append(comment_form);
@@ -171,12 +171,9 @@ $(document).ready(function(){
                                 });
                                 $(this).html("");
                             }
-
                         }
-
                     });
-
-                });
+                })
             };
         };
         this.Events=new function(){
