@@ -95,7 +95,7 @@ $(document).ready(function(){
         };
         this.PostLike=new function(){
             this.LikeClick=new function(){
-                $('.single_post .like_comment_part .like').click(function(){
+                $('.posts_container').on('click','.single_post .like_comment_part .like',function(){
                     var like=$(this).html(),str;
                     if(like=='Like'){
                         $(this).html('Liked').css('color','green');
@@ -119,7 +119,7 @@ $(document).ready(function(){
                 });
             };
             this.ShowAllLikes=new function(){
-                $('.single_post .like_comment_part .all_likes').mouseenter(function(){
+                $('.posts_container').on("mouseenter",'.single_post .like_comment_part .all_likes',function(){
                     $(this).addClass('showalllikesActive');
                     var post_id=$(this).parent().parent().data('postid')
                     $.ajax({
@@ -128,20 +128,15 @@ $(document).ready(function(){
                         type: 'get'
                     });
                 });
-                $('.single_post .like_comment_part .all_likes').mouseleave(function(){
+                $('.posts_container').on("mouseleave",'.single_post .like_comment_part .all_likes',function(){
                     $(this).removeClass('showalllikesActive');
                     $('.alllikesholder').remove();
                 });
-//                $('.single_post .like_comment_part .all_likes').mouseenter(function(){
-//                    var likers_list=$(this).data("likers");
-//                    alert(likers_list)
-//
-//                });
 
             };
         };
         this.PostDelete=new function(){
-            $('.single_post .post_delete').click(function(){
+            $('.posts_container').on('click','.single_post .post_delete',function(){
                 var post_id=$(this).parent().parent().data('postid')
                 $.ajax({
                     url: '<%= Rails.application.routes.url_helpers.post_delete_users_path %>',
@@ -152,10 +147,10 @@ $(document).ready(function(){
         };
         this.PostComment=new function(){
             this.CommentFormLoad=new function(){
-                $('.single_post .like_comment_part .comment').click(function(){
+                $('.posts_container').on('click','.single_post .like_comment_part .comment',function(){
                     var comment_form=$('<div class="comment_form">'+
-                                          '<div contenteditable="true" class="comment_text_field" data-placeholder="Comment here..."></div>'+
-                                       '</div>');
+                            '<div contenteditable="true" class="comment_text_field" data-placeholder="Comment here..."></div>'+
+                            '</div>');
                     if($(this).parent().siblings('.comment_container').find('.comment_form').length===0) {
                         $('.single_post .comment_container .comment_form').remove();
                         $(this).parent().siblings('.comment_container').append(comment_form);
@@ -176,12 +171,9 @@ $(document).ready(function(){
                                 });
                                 $(this).html("");
                             }
-
                         }
-
                     });
-
-                });
+                })
             };
         };
         this.Events=new function(){

@@ -1,7 +1,11 @@
 <div class="alllikesholder">
-  <% @likers_list.each do |liker| %>
+  <% @all_likes.each do |like| %>
       <div class="likes_row">
-        <%= liker %>
+      <% if like.user.id==@user_id %>
+            <%= "You" %>
+      <% else %>
+            <%= like.user.name %>
+      <% end %>
       </div>
   <% end %>
 </div>

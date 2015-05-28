@@ -54,16 +54,17 @@
             <div class="body_part"><%= pst.body %></div>
           </div>
           <div class="like_comment_part">
-            <% if pst.like!=nil %>
-                <% if pst.like.split(',').include?(@cuuser.id.to_s) %>
-                    <span style="color: green" class="like">Liked</span>
-                <% else %>
-                    <span class="like">Like</span>
-                <% end %>
+            <% if pst.likes.any? %>
+                <% already_liked = pst.likes.select {|l| l["user_id"] == @cuuser.id}%>
+                    <% if already_liked.any? %>
+                        <span style="color: green" class="like">Liked</span>
+                    <% else %>
+                        <span class="like">Like</span>
+                    <% end %>
                 <span class="all_likes">
-                  <span class="number"><%= pst.like.split(',').length %></span>
+                  <span class="number"><%= pst.likes.count %></span>
                   <span class="unit">
-                    <% if pst.like.split(',').length==1 %>
+                    <% if pst.likes.count==1 %>
                       Like
                     <% else %>
                       Likes
