@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require communication.js.erb
+//= require jquery.visible
 //= require_tree .

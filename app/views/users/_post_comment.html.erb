@@ -1,9 +1,9 @@
 <div class="single_comment">
   <% if current_user.profilepic.present? %>
-      <%= image_tag(current_user.profilepic) %>
+      <%= link_to image_tag(current_user.profilepic, :border => 0, :alt => '', :title => current_user.name), user_path(current_user), :class => ''%>
   <% else %>
-      <img src="/image/profile-image2.gif" />
+      <%= link_to image_tag("/image/profile-image2.gif", :border => 0, :alt => '', :title => current_user.name), user_path(current_user), :class => ''%>
   <% end %>
-  <span class="commenter"><%= current_user.name %></span>
+  <span class="commenter"><%= link_to current_user.name, user_path(current_user) %></span>
   <span class="comment_body"> <%= @comment.body %></span>
 </div>

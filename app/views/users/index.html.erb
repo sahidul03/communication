@@ -41,11 +41,11 @@
         <div class="single_post" data-postid="<%= pst.id %>">
           <div class="post_title">
             <% if pst.user.profilepic.present? %>
-                <%= image_tag(pst.user.profilepic) %>
+                <%= link_to image_tag(pst.user.profilepic, :border => 0, :alt => '', :title => pst.user.name), user_path(pst.user), :class => ''%>
             <% else %>
-                <img src="/image/profile-image2.gif" />
+                <%= link_to image_tag("/image/profile-image2.gif", :border => 0, :alt => '', :title => pst.user.name), user_path(pst.user), :class => ''%>
             <% end %>
-          <span class="user"> <%= pst.user.email %> </span><%= pst.title if pst.title %>
+          <span class="user"> <%= link_to pst.user.email, user_path(pst.user) %> </span><%= pst.title if pst.title %>
           <% if pst.user.id==@cuuser.id %>
                 <img class="post_delete" src="/image/cancel.png" />
           <% end %>
@@ -82,11 +82,11 @@
                 <% pst.comments.reverse.each do |cmnt|  %>
                   <div class="single_comment">
                     <% if cmnt.user.profilepic.present? %>
-                        <%= image_tag(cmnt.user.profilepic) %>
+                        <%= link_to image_tag(cmnt.user.profilepic, :border => 0, :alt => '', :title => cmnt.user.name), user_path(cmnt.user), :class => ''%>
                     <% else %>
-                        <img src="/image/profile-image2.gif" />
+                        <%= link_to image_tag("/image/profile-image2.gif", :border => 0, :alt => '', :title => cmnt.user.name), user_path(cmnt.user), :class => ''%>
                     <% end %>
-                    <span class="commenter"><%= cmnt.user.name %></span>
+                    <span class="commenter"><%=link_to cmnt.user.name, user_path(cmnt.user) %></span>
                     <span class="comment_body"> <%= cmnt.body %></span>
                   </div>
                 <% end %>
@@ -125,3 +125,5 @@
       </div>
     </div>
   </div>
+
+  <div class="post_loader">post loader.........</div>

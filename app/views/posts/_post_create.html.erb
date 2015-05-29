@@ -2,11 +2,11 @@
 <div class="single_post" data-postid="<%= @post.id %>">
   <div class="post_title">
     <% if @post.user.profilepic.present? %>
-        <%= image_tag(@post.user.profilepic) %>
+        <%= link_to image_tag(@post.user.profilepic, :border => 0, :alt => '', :title => @post.user.name), user_path(@post.user), :class => ''%>
     <% else %>
-        <img src="/image/profile-image2.gif" />
+        <%= link_to image_tag("/image/profile-image2.gif", :border => 0, :alt => '', :title => @post.user.name), user_path(@post.user), :class => ''%>
     <% end %>
-    <span class="user"> <%= @post.user.email %> </span><%= @post.title if @post.title %>
+    <span class="user"> <%= link_to @post.user.email, user_path(@post.user) %> </span><%= @post.title if @post.title %>
     <img class="post_delete" src="/image/cancel.png" />
   </div>
   <div class="post_body">
