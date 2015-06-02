@@ -68,24 +68,28 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user=User.find(params[:id])
-    @friend_comment='Add Friend'
-    if current_user==@user
-      @friend_comment='Me'
+    @user=User.find(params[:id]) rescue nil
+    if @user
+      @friend_comment='Add Friend'
+      if current_user==@user
+        @friend_comment='Me'
+      else
+        frndtype1=current_user.sent_request.where("friend_type = ? AND recipient_id = ?", 1 , params[:id])
+        frndtype2=current_user.received_request.where("friend_type = ? AND sender_id = ?", 1, params[:id])
+        frndtype3=current_user.received_request.where("friend_type = ? AND sender_id = ?", 2, params[:id])
+        frndtype4=current_user.sent_request.where("friend_type = ? AND recipient_id = ?", 2, params[:id])
+        if frndtype1.any? || frndtype2.any?
+          @friend_comment='Friend'
+        end
+        if frndtype3.any?
+          @friend_comment='Confirm or Cancel'
+        end
+        if frndtype4.any?
+          @friend_comment='Request Sent'
+        end
+      end
     else
-      frndtype1=current_user.sent_request.where("friend_type = ? AND recipient_id = ?", 1 , params[:id])
-      frndtype2=current_user.received_request.where("friend_type = ? AND sender_id = ?", 1, params[:id])
-      frndtype3=current_user.received_request.where("friend_type = ? AND sender_id = ?", 2, params[:id])
-      frndtype4=current_user.sent_request.where("friend_type = ? AND recipient_id = ?", 2, params[:id])
-      if frndtype1.any? || frndtype2.any?
-        @friend_comment='Friend'
-      end
-      if frndtype3.any?
-        @friend_comment='Confirm or Cancel'
-      end
-      if frndtype4.any?
-        @friend_comment='Request Sent'
-      end
+      redirect_to users_path
     end
   end
 
@@ -178,6 +182,11 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def pagination_sample
+    @users = User.order(:name).page(params[:page]).per(2)
+    # raise User.all.count.inspect
+  end
 
   protected
   def common_method

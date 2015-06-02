@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get "show_all_likes"
       get "post_delete"
       get "post_comment"
+      get "pagination_sample"
     end
   end
   resources :messages do

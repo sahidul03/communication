@@ -1,0 +1,6 @@
+<div>
+  <% @users.each do |usr| %>
+  <div><%= usr.name %></div>
+  <% end %>
+</div>
+<div><%= paginate @users %></div>
