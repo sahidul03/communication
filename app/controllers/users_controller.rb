@@ -44,27 +44,6 @@ class UsersController < ApplicationController
     end
     @all_posts= @all_posts.sort_by &:created_at
     @all_posts.reverse!
-     # raise @all_posts.inspect
-
-    # testing purpose
-    # post=Post.find(17)
-    # like=post.like
-    # if like==nil
-    #   like=current_user.id.to_s;
-    #   # raise like.inspect
-    # else
-    #   like_arry=like.split(',')
-    #   # raise like_arry.inspect
-    #   unless like_arry.include?(current_user.id)
-    #     like=like+','+current_user.id.to_s
-    #     raise like.inspect
-    #   end
-    #   # like=like+','+current_user.id.to_s
-    # end
-    # post.update(:like=>like)
-
-
-
   end
 
   def show
@@ -151,7 +130,12 @@ class UsersController < ApplicationController
       unless post.nil?
         already_liked=post.likes.where(:user_id=>current_user.id)
         unless already_liked.any?
-          post.likes.create(:user_id=>current_user.id)
+          like=post.likes.create(:user_id=>current_user.id)
+          unless current_user==post.user
+            notify_body='likes your post'
+            notify=post.notifications.build(:body=>notify_body,:seen=>false,:maker_id=>current_user.id,:recipient_id=>post.user.id)
+            notify.save
+          end
         end
       end
   end
@@ -177,6 +161,26 @@ class UsersController < ApplicationController
     @comment=@post.comments.new(:user_id=>current_user.id,:body=>params[:body])
     if @comment.save
       @post_comment_flag="true"
+      unless current_user==@post.user
+        notify_body='comments on your post'
+        notify=@post.notifications.build(:body=>notify_body,:seen=>false,:maker_id=>current_user.id,:recipient_id=>@post.user.id)
+        notify.save
+      end
+      commented_user=[]
+      if @post.comments.any?
+        commenter=@post.comments
+        commented_user=commenter+commenter
+        commented_user.uniq! {|e| e[:user_id] }
+        commented_user.each do |cmnt|
+          unless current_user==cmnt.user
+            unless @post.user==cmnt.user
+              notify_body='comments on '+@post.user.name+"'s post of you"
+              notify=@post.notifications.build(:body=>notify_body,:seen=>false,:maker_id=>current_user.id,:recipient_id=>cmnt.user.id)
+              notify.save
+            end
+          end
+        end
+      end
     else
       @post_comment_flag="false"
     end
