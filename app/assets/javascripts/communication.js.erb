@@ -176,10 +176,31 @@ $(document).ready(function(){
                 })
             };
         };
+        this.NotificationShow=new function(){
+            $('.header_menu_container').on('click','.notification_menu',function(e){
+                e.stopPropagation();
+                $('.serched_friend_list_container').hide();
+                $('.received_friend_request_container').hide();
+                var RNC=$('.received_notification_container');
+                if(RNC.is(':visible')) {
+                    RNC.hide();
+                }
+                else{
+                    RNC.show();
+                    $.ajax({
+                        url: '<%= Rails.application.routes.url_helpers.load_notification_users_path %>',
+                        data: {},
+                        type: 'get'
+                    });
+                }
+
+            });
+        };
         this.Events=new function(){
             $('.frnd_search_field_and_container').click(function(e){
                 e.stopPropagation();
                 $('.received_friend_request_container').hide();
+                $('.received_notification_container').hide();
             });
             $('.received_friend_request_container').click(function(e){
                 e.stopPropagation();
@@ -187,10 +208,12 @@ $(document).ready(function(){
             $(document).click(function(){
                 $('.serched_friend_list_container').hide();
                 $('.received_friend_request_container').hide();
+                $('.received_notification_container').hide();
             });
             $('.friend_request_menu').click(function(e){
                 e.stopPropagation();
                 $('.serched_friend_list_container').hide();
+                $('.received_notification_container').hide();
                 var RFRC=$('.received_friend_request_container');
                 if(RFRC.is(':visible')) {
                     RFRC.hide();

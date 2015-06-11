@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get "post_delete"
       get "post_comment"
       get "pagination_sample"
+      get "load_notification"
     end
   end
   resources :messages do

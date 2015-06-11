@@ -1,0 +1,43 @@
+<% if @all_notifications.any? %>
+    <div class="notification_box">
+      <% @all_notifications.each do |notify| %>
+          <%= link_to users_path do %>
+              <% if notify.seen  %>
+                  <div class="every_notification">
+                    <div class="image_holder">
+                      <% if notify.maker.profilepic %>
+                          <%= image_tag(notify.maker.profilepic,:class => "notify_image")%>
+                      <% else %>
+                          <%= image_tag('/image/profile-image2.gif',:class => "notify_image")%>
+                      <% end %>
+                    </div>
+                    <div class="body_holder">
+                      <span class="maker_mane"><%= notify.maker.name %></span>
+                      <span class="body"><%= notify.body %></span>
+                    </div>
+                    <div style="clear: both"></div>
+                  </div>
+              <% else %>
+                  <div class="every_notification unread_notification">
+                    <div class="image_holder">
+                      <% if notify.maker.profilepic %>
+                          <%= image_tag(notify.maker.profilepic,:class => "notify_image")%>
+                      <% else %>
+                          <%= image_tag('/image/profile-image2.gif',:class => "notify_image")%>
+                      <% end %>
+                    </div>
+                    <div class="body_holder">
+                      <span class="maker_mane"><%= notify.maker.name %></span>
+                      <span class="body"><%= notify.body %></span>
+                    </div>
+                    <div style="clear: both"></div>
+                  </div>
+              <% end %>
+          <% end %>
+      <% end %>
+    </div>
+<% else %>
+    <div>
+      None
+    </div>
+<% end %>

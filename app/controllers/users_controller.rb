@@ -186,6 +186,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def load_notification
+    @all_notifications=current_user.received_notification(7)
+  end
 
   def pagination_sample
     @users = User.order(:name).page(params[:page]).per(2)

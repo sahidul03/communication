@@ -208,7 +208,7 @@ width: 250px;
 .single_post .post_title img{
   height: 35px;
   width: 30px;
-  border-radius: 3px;
+  border-radius: 50%;
 }
 .single_post .post_title .post_delete{
   height: 17px;
@@ -280,8 +280,8 @@ width: 250px;
 }
 .single_post .single_comment img{
   width: 25px;
-  height: 30px;
-  border-radius: 2px;
+  height: 29px;
+  border-radius: 50%;
 }
 .single_post .comment_text_field:focus{
   color: #000000;
@@ -327,4 +327,59 @@ margin-right: 5px;
 }
 [contentEditable=true]:empty:not(:focus):before{
   content:attr(data-placeholder)
+}
+.received_notification_container{
+  display: none;
+  position: absolute;
+  left: 14px;
+  top: -20px;
+  z-index: 10;
+}
+.notification_box{
+  border-right: 1px solid #dadada;
+  border-left: 1px solid #dadada;
+  border-top: 1px solid #dadada;
+  width: 300px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color=#a49d9d)";/*IE 8*/
+  -moz-box-shadow: 1px 1px 5px #a49d9d;/*FF 3.5+*/
+  -webkit-box-shadow: 1px 1px 5px #a49d9d;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+  box-shadow: 1px 1px 5px #a49d9d;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color=#a49d9d); /*IE 5.5-7*/
+
+
+}
+.notification_box .every_notification{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dadada;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 12px;
+
+
+}
+.notification_box .notify_image{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.notification_box .image_holder{
+  float: left;
+}
+.notification_box .body_holder{
+  float: right;
+  width: 237px;
+  padding-left: 14px;
+  padding-top: 5px ;
+}
+.notification_box .unread_notification{
+  background-color: #dff0d8;
+}
+.notification_box .maker_mane{
+}
+.notification_box .body{
+  color: #666666;
 }
