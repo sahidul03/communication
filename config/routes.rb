@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :users do
-    resources :posts
+    resources :posts do
+      collection do
+        get "notification_show/:id", action: 'notification_show', as: :notification_show
+      end
+    end
     collection do
       get "search_friend"
       get "add_friend_request"

@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
-  before_action :common_method
+  before_action :common_method, :get_friend_list, :except => [:search_friend,:add_friend_request,:confirm_friend_request,:confirm_friend_request_ajax,
+                                                              :cancel_friend_request,:cancel_friend_request_ajax,:load_notification,:post_comment,
+                                                              :post_create,:post_delete,:post_like,:show_all_likes,:load_received_friend_request_list,
+                                                              :load_notification, :index]
 
   def index
     @users=User.all
     @post=Post.new
     @user_p=User.new
-    @message=Message.new
     @cuuser=current_user
     friend1=current_user.sent_request.where("friend_type = ?",1)
     friend2=current_user.received_request.where("friend_type = ?",1)
@@ -187,7 +189,7 @@ class UsersController < ApplicationController
   end
 
   def load_notification
-    @all_notifications=current_user.received_notification(7)
+    @all_notifications=current_user.received_notification.last(7)
   end
 
   def pagination_sample

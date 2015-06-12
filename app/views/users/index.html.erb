@@ -1,34 +1,9 @@
   <h1>Home Page</h1>
-  <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3"></div>
-    <div class="col-lg-6 col-md-6 col-sm-6">
-      <div class="frnd_search_field_and_container">
-      <input type="text" class="search_text_field" placeholder="Search frineds....">
-      <input type="button" class="search_button" value="Search">
-      <div class="serched_friend_list_container"></div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-3"></div>
-  </div>
+
 
   <br/>
-  <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3">
-      <% if @friend_list.any? %>
-      <div class="chatting_contacts_container">
-      <% @friend_list.each do |friend| %>
-          <% if friend.id!=@user_id %>
-              <div class="contacts" data-userinfo="<%= friend.to_json %>">
-                <%= friend.email%><br/>
-              </div>
-          <% end %>
-      <% end %>
-      </div>
-      <% end %>
-    </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-6">
-      <div class="">
+  <div class="">
         <span>Create a status....</span>
         <%= form_for [@cuuser, @post], remote: true do |f| %>
             <p><%= f.text_field :title, :class=>"status_title_input_field", :autocomplete => :off, :placeholder=>"Title ..." %><p/>
@@ -36,7 +11,7 @@
             <%= f.submit 'Post'%>
         <% end %>
       </div>
-      <div class="posts_container">
+  <div class="posts_container">
         <% @all_posts.each do |pst| %>
         <div class="single_post" data-postid="<%= pst.id %>">
           <div class="post_title">
@@ -96,35 +71,6 @@
         </div>
         <% end %>
       </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-3"></div>
-  </div>
-
-  <div class="chatbar">
-    <div class="alert_for_new_conversation">Get new conversation</div>
-    <div class="titlebar">
-      <span class="username">Name</span>
-      <img src="/image/cancel.png" />
-
-    </div>
-    <div class="ChatContentField">
-      <div class="chat_barAndMessage_container">
-        <!--<div class="every_message">-->
-        <!--<div class="username">Sahid</div>-->
-        <!--<div class="body">It's a pleasure to meet you</div>-->
-        <!--<div class="datetime">16.1.2015</div>-->
-        <!--</div>-->
-      </div>
-      <div class="MessageInputField">
-        <%= form_for @message, remote: true do |f| %>
-            <%= hidden_field_tag :recipient_id %>
-            <%= f.text_field :body, :class=>"text_input_field",:autocomplete => :off, :placeholder=>"Write something here....." %>
-            <%= f.submit :class=>"hidden_class" %>
-        <% end %>
-
-      </div>
-    </div>
-  </div>
 
   <div class="post_loader">post loader.........</div>
   <!--<div class="notification_box">-->

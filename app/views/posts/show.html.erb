@@ -1,0 +1,61 @@
+<div class="posts_container">
+  <% if @post %>
+      <% pst=@post %>
+      <div class="single_post" data-postid="<%= pst.id %>">
+        <div class="post_title">
+          <% if pst.user.profilepic.present? %>
+              <%= link_to image_tag(pst.user.profilepic, :border => 0, :alt => '', :title => pst.user.name), user_path(pst.user), :class => ''%>
+          <% else %>
+              <%= link_to image_tag("/image/profile-image2.gif", :border => 0, :alt => '', :title => pst.user.name), user_path(pst.user), :class => ''%>
+          <% end %>
+          <span class="user"> <%= link_to pst.user.email, user_path(pst.user) %> </span><%= pst.title if pst.title %>
+          <% if pst.user.id==current_user.id %>
+              <img class="post_delete" src="/image/cancel.png" />
+          <% end %>
+        </div>
+        <div class="post_body">
+          <div class="body_part"><%= pst.body %></div>
+        </div>
+        <div class="like_comment_part">
+          <% if pst.likes.any? %>
+              <% already_liked = pst.likes.select {|l| l["user_id"] == current_user.id}%>
+              <% if already_liked.any? %>
+                  <span style="color: green" class="like">Liked</span>
+              <% else %>
+                  <span class="like">Like</span>
+              <% end %>
+              <span class="all_likes">
+                  <span class="number"><%= pst.likes.count %></span>
+                  <span class="unit">
+                    <% if pst.likes.count==1 %>
+                      Like
+                    <% else %>
+                      Likes
+                    <% end %>
+                  </span>
+                </span>
+          <% else %>
+              <span class="like">Like</span>
+          <% end %>
+          <span class="comment">Comment</span>
+        </div>
+        <div class="comment_container">
+          <div class="comments">
+            <% if pst.comments.any? %>
+                <% pst.comments.reverse.each do |cmnt|  %>
+                    <div class="single_comment">
+                      <% if cmnt.user.profilepic.present? %>
+                          <%= link_to image_tag(cmnt.user.profilepic, :border => 0, :alt => '', :title => cmnt.user.name), user_path(cmnt.user), :class => ''%>
+                      <% else %>
+                          <%= link_to image_tag("/image/profile-image2.gif", :border => 0, :alt => '', :title => cmnt.user.name), user_path(cmnt.user), :class => ''%>
+                      <% end %>
+                      <span class="commenter"><%=link_to cmnt.user.name, user_path(cmnt.user) %></span>
+                      <span class="comment_body"> <%= cmnt.body %></span>
+                    </div>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

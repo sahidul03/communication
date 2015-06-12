@@ -1,7 +1,7 @@
 <% if @all_notifications.any? %>
     <div class="notification_box">
       <% @all_notifications.each do |notify| %>
-          <%= link_to users_path do %>
+          <%= link_to notification_show_user_posts_path(:user_id=>notify.post.user.id,:id=>notify.id) do %>
               <% if notify.seen  %>
                   <div class="every_notification">
                     <div class="image_holder">
