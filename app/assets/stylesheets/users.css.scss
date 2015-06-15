@@ -118,34 +118,50 @@ width: 250px;
   top: 26px;
   left: 15px;
   width: 250px;
-  border: 1px solid #dadada;
+  border-top: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  border-left: 1px solid #dadada;
   z-index: 100;
   background-color: #ffffff;
   border-radius: 2px;
+  font-size: 13px;
 
 
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color=#979393)";/*IE 8*/
-  -moz-box-shadow: 2px 2px 4px #979393;/*FF 3.5+*/
-  -webkit-box-shadow: 2px 2px 4px #979393;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
-  box-shadow: 2px 2px 4px #979393;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
-  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color=#979393); /*IE 5.5-7*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color=#a49d9d)";/*IE 8*/
+  -moz-box-shadow: 1px 1px 5px #a49d9d;/*FF 3.5+*/
+  -webkit-box-shadow: 1px 1px 5px #a49d9d;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+  box-shadow: 1px 1px 5px #a49d9d;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color=#a49d9d); /*IE 5.5-7*/
 
 }
 
-.serched_friend_list_container div{
-  background: none repeat scroll 0 0 #dadada;
+.serched_friend_list_container .every_searched_friend{
+  background-color: #ffffff;
   height: 37px;
-  margin-bottom: 2px;
-  margin-top: 2px;
-  padding-left: 5px;
+  padding-bottom: 37px;
+  padding-top: 2px;
+  padding-left: 8px;
+  border-bottom: 1px solid #dadada;
+  padding-right: 5px;
 }
-.serched_friend_list_container div .email{
-  margin-top: 5px;
+.serched_friend_list_container a{
+  text-decoration: none;
+}
+.serched_friend_list_container a:focus{
+  color: green;
+}
+.serched_friend_list_container .left_div{
+  padding-top: 9px;
+  float: left;
+}
+.serched_friend_list_container .right_div{
+  float: right;
 }
 .serched_friend_list_container img{
   height: 35px;
   float: right;
   width: 30px;
+  border-radius: 50%;
 }
 .add_friend_request{
 }

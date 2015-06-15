@@ -196,6 +196,33 @@ $(document).ready(function(){
 
             });
         };
+        this.AfterSearchArrow=new function(){
+            $('.all_elements').on('keydown','.search_text_field',function(e){
+                if(e.keyCode==40){
+                    e.preventDefault();
+                    if($('.serched_friend_list_container').is(':visible'))
+                    {
+                        $('.serched_friend_list_container a')[0].focus();
+                    }
+                }
+            });
+            $('.all_elements').on('keydown','.serched_friend_list_container a',function(e){
+                if(e.keyCode==40){
+                    e.preventDefault();
+                    $(this).next().focus();
+                }
+                else if(e.keyCode==38){
+                    e.preventDefault();
+                    $(this).prev().focus();
+                }
+            });
+            $('.all_elements').on('focus','.serched_friend_list_container a',function(){
+               $(this).find('div').css('background-color','#f2f2f2');
+            });
+            $('.all_elements').on('focusout','.serched_friend_list_container a',function(){
+                $(this).find('div').css('background-color','#ffffff');
+            });
+        };
         this.Events=new function(){
             $('.frnd_search_field_and_container').click(function(e){
                 e.stopPropagation();

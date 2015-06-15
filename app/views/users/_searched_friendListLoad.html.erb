@@ -2,11 +2,18 @@
     <% @searched_friend.each do |frnd|  %>
 
           <%= link_to user_path(frnd) do %>
-          <div>
-            <span class="email"><%= frnd.email %></span>
-            <% if frnd.profilepic.present? %>
-                <%= image_tag(frnd.profilepic) %>
-            <% end %>
+          <div class="every_searched_friend">
+            <div class="left_div">
+              <span class="email"><%= frnd.email %></span>
+            </div>
+            <div class="right_div">
+              <% if frnd.profilepic.present? %>
+                  <%= image_tag(frnd.profilepic) %>
+              <% else %>
+                  <%= image_tag('/image/profile-image2.gif') %>
+              <% end %>
+            </div>
+            <div style="clear:both;"></div>
           </div>
           <% end %>
 
