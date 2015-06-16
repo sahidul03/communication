@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  has_many :comments
-  has_many :likes
-  has_many :notifications
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent:  :destroy
+  has_many :notifications, dependent: :destroy
   validates :body, presence: true
 end

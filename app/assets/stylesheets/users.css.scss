@@ -379,7 +379,7 @@ margin-right: 5px;
 
 }
 .notification_box .notify_image{
-  width: 40px;
+  width: 36px;
   height: 40px;
   border-radius: 50%;
 }
@@ -399,4 +399,77 @@ margin-right: 5px;
 }
 .notification_box .body{
   color: #666666;
+}
+.notification_box .show_all_notification{
+  text-align: center;
+  font-size: 13px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: antiquewhite;
+  width: inherit;
+}
+.notification_box a{
+  text-decoration: none;
+}
+
+
+//all notification css
+
+.all_notification_container{
+  border-right: 1px solid #dadada;
+  border-left: 1px solid #dadada;
+  border-top: 1px solid #dadada;
+  margin-bottom: 50px;
+  background-color: #ffffff;
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color=#a49d9d)";/*IE 8*/
+  -moz-box-shadow: 1px 1px 5px #a49d9d;/*FF 3.5+*/
+  -webkit-box-shadow: 1px 1px 5px #a49d9d;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+  box-shadow: 1px 1px 5px #a49d9d;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color=#a49d9d); /*IE 5.5-7*/
+
+
+}
+.all_notification_container .every_notification{
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #dadada;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 12px;
+
+
+}
+.all_notification_container .notify_image{
+  width: 32px;
+  height: 35px;
+  border-radius: 50%;
+}
+.all_notification_container .image_holder{
+  float: left;
+}
+.all_notification_container .body_holder{
+  float: left;
+  width: 237px;
+  padding-left: 14px;
+  padding-top: 5px ;
+}
+.all_notification_container .unread_notification{
+  background-color: #dff0d8;
+}
+.all_notification_container .maker_mane{
+}
+.all_notification_container .body{
+  color: #666666;
+}
+.all_notification_container .show_all_notification{
+  text-align: center;
+  font-size: 13px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: antiquewhite;
+  width: inherit;
+}
+.all_notification_container a{
+  text-decoration: none;
 }

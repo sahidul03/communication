@@ -9,18 +9,18 @@ class User < ActiveRecord::Base
 
   mount_uploader :profilepic, ProfilepicUploader
 
-  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
-  has_many :received_messages, class_name: "Message", foreign_key: "recipient_id"
+  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id", dependent: :destroy
+  has_many :received_messages, class_name: "Message", foreign_key: "recipient_id", dependent: :destroy
 
-  has_many :sent_notification, class_name: "Notification", foreign_key: "maker_id"
-  has_many :received_notification, class_name: "Notification", foreign_key: "recipient_id"
+  has_many :sent_notification, class_name: "Notification", foreign_key: "maker_id",dependent: :destroy
+  has_many :received_notification, class_name: "Notification", foreign_key: "recipient_id", dependent: :destroy
 
-  has_many :sent_request, class_name: "UserFriend", foreign_key: "sender_id"
-  has_many :received_request, class_name: "UserFriend", foreign_key: "recipient_id"
+  has_many :sent_request, class_name: "UserFriend", foreign_key: "sender_id", dependent: :destroy
+  has_many :received_request, class_name: "UserFriend", foreign_key: "recipient_id", dependent: :destroy
 
-  has_many :posts
-  has_many :comments
-  has_many :likes
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
 
   def self.from_omniauth_linkedin(auth)

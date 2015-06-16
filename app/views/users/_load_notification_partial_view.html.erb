@@ -35,9 +35,14 @@
               <% end %>
           <% end %>
       <% end %>
+      <%= link_to all_notification_users_path do %>
+      <div class="show_all_notification">All Notification</div>
+      <% end %>
     </div>
 <% else %>
-    <div>
-      None
+    <div class="notification_box">
+        <div>
+            None
+        </div>
     </div>
 <% end %>

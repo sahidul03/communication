@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  before_action :common_method, :get_friend_list, :except => [:search_friend,:add_friend_request,:confirm_friend_request,:confirm_friend_request_ajax,
-                                                              :cancel_friend_request,:cancel_friend_request_ajax,:load_notification,:post_comment,
-                                                              :post_create,:post_delete,:post_like,:show_all_likes,:load_received_friend_request_list,
-                                                              :load_notification, :index]
+  before_action :common_method, :get_friend_list,
+                :except => [:search_friend,:add_friend_request,
+                            :confirm_friend_request,:confirm_friend_request_ajax,
+                            :cancel_friend_request,:cancel_friend_request_ajax,:load_notification,:post_comment,
+                            :post_create,:post_delete,:post_like,:show_all_likes,:load_received_friend_request_list,
+                            :load_notification, :index]
 
   def index
     @users=User.all
@@ -80,7 +82,7 @@ class UsersController < ApplicationController
   end
 
   def search_friend
-    @searched_friend=User.where("email like ?", "%#{params[:friend_name]}%")
+    @searched_friend=User.where("email like ?", "%#{params[:friend_name]}%").first(7)
   end
 
   def add_friend_request
@@ -195,6 +197,10 @@ class UsersController < ApplicationController
   def pagination_sample
     @users = User.order(:name).page(params[:page]).per(2)
     # raise User.all.count.inspect
+  end
+
+  def all_notification
+    @all_notifications=current_user.received_notification
   end
 
   protected

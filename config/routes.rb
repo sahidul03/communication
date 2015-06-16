@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get "post_comment"
       get "pagination_sample"
       get "load_notification"
+      get "all_notification"
     end
   end
   resources :messages do
